@@ -1,12 +1,16 @@
 import {
-    Grid,
     Button,
+    Grid,
     Typography,
-} from "@mui/material"
+} from "@mui/material";
+import { updateRequest } from "@redux/slices/request";
+import { useAppDispatch } from "@redux/store";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const SelectPatientType = () => {
+
+    const dispatch = useAppDispatch()
 
     const [active, setActive] = useState({
         isRepresentative: false,
@@ -15,21 +19,32 @@ const SelectPatientType = () => {
     })
 
     const handleClickActive = (name: string, value: boolean) => {
-        setActive(prev => {
-            prev.isInstitution = false
-            prev.isPatient = false
-            prev.isRepresentative = false
 
-            return { ...prev, [name]: value }
-        })
+        const payload = {
+            isInstitution: false,
+            isPatient: false,
+            isRepresentative: false,
+            [name]: value
+        }
+
+        setActive(payload)
     }
+
+    useEffect(() => {
+
+        const { isInstitution, isPatient, isRepresentative } = active
+        if (!isInstitution && !isPatient && !isRepresentative) return
+
+        dispatch(updateRequest({ payload: { ...active } }))
+
+    }, [active])
 
     return (
         <Grid item xs={12}>
             <Grid container spacing={2} padding={1}>
                 <Grid item xs={12}>
                     <Grid container>
-                        <Grid container spacing={1} justifyContent={'space-evenly'} alignItems={'center'}>
+                        <Grid container spacing={1} justifyContent={'space-around'} alignItems={'center'}>
                             <Grid item>
                                 <Button
                                     type="button"

@@ -12,6 +12,7 @@ import biomedicalReducer from '../slices/biomedical'
 import contextualReducer from '../slices/whodas/contextual'
 import whodaFormReducer from '../slices/whodas/form'
 import whodaQuestionReducer from '../slices/whodas/question'
+import requestReducer from '../slices/request'
 
 const rootReducer = combineReducers({
 	me: meReducer,
@@ -24,6 +25,7 @@ const rootReducer = combineReducers({
 	contextual: contextualReducer,
 	whodaForm: whodaFormReducer,
 	whodaQuestion: whodaQuestionReducer,
+	request: requestReducer
 });
 
 export const store = configureStore({

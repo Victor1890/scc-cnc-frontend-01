@@ -7,10 +7,11 @@ import {
     Stepper,
     Typography
 } from '@mui/material'
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useMemo, useState } from 'react'
 import { IAuthSchedulerProps } from './scheduler.interface'
 import FormInput from '@components/app/modal/FormModal/FormInput'
 import { Entity, FieldConfig } from '@components/app/modal/FormModal/FormModal.interface'
+import { useAppSelector } from '@redux/store'
 
 const AuthScheduler = <T extends object>({
     stepFields
@@ -21,12 +22,32 @@ const AuthScheduler = <T extends object>({
     const [errorIndex, setErrorIndex] = useState<number | null>(null)
     const [activeStep, setActiveStep] = useState(0)
 
+    const { payload } = useAppSelector(x => x.request)
+    const { isInstitution, isPatient, isRepresentative } = useMemo(() => {
+
+        if (!payload) {
+            return { isInstitution: false, isPatient: false, isRepresentative: false }
+        }
+
+        return payload
+    }, [payload])
+
+    const handleFormValidation = () => {
+        if (!isInstitution && !isPatient && !isRepresentative) return false
+
+        return true
+    }
+
     const handleBack = () => {
         setActiveStep(activeStep - 1)
     }
 
     const handleNext = () => {
-        // setErrorIndex(activeStep)
+        if (!handleFormValidation()) {
+            setErrorIndex(activeStep)
+            return
+        }
+
         setActiveStep(activeStep + 1)
     }
 
@@ -61,7 +82,7 @@ const AuthScheduler = <T extends object>({
                     if (index === errorIndex) {
                         labelProps.optional = (
                             <Typography variant="caption" color="error">
-                                Error
+                                Favor en completar los datos
                             </Typography>
                         );
 

@@ -8,19 +8,29 @@ import {
     documentRequest,
     motiveRequest,
     requestField,
+    requestInstitutionField,
+    requestRepresentativeField,
     streetAddressRequest
 } from "@components/pages/request/modal/create-case/fields"
 import SelectPatientType from "./select-role"
+import { useAppSelector } from "@redux/store"
+import { insertByCondition } from "@utils/array/array.util"
+import { useMemo } from "react"
 
 const SchedulePageComponent = () => {
+
+    const { payload } = useAppSelector(x => x.request)
+
+    const { isInstitution, isPatient, isRepresentative } = useMemo(() => {
+        if (!payload) return { isInstitution: false, isPatient: false, isRepresentative: false }
+        return payload
+    }, [payload])
 
     return (
         <AuthWrapper1>
             <Grid container justifyContent="space-between" alignItems="center" sx={{ minHeight: '100vh' }}>
                 <Grid item container justifyContent="center">
-                    <AuthCardWrapper
-                        sx={{ maxWidth: { xs: 1000, lg: 1075 } }}
-                    >
+                    <AuthCardWrapper sx={{ maxWidth: { xs: 1000, lg: 1075 } }}>
                         <Grid container spacing={2} justifyContent="center">
                             <Grid item xs={12}>
                                 <Grid
@@ -45,10 +55,32 @@ const SchedulePageComponent = () => {
                                             label: "Motivos",
                                             fields: motiveRequest
                                         },
-                                        {
+                                        ...insertByCondition(isPatient, {
                                             label: "Solicitud",
                                             fields: requestField
-                                        },
+                                        }),
+
+                                        // Institution
+                                        ...insertByCondition(isInstitution, {
+                                            label: "Solicitud de la Institución",
+                                            fields: requestInstitutionField
+                                        }),
+                                        ...insertByCondition(isInstitution, {
+                                            label: "Solicitud del Paciente",
+                                            fields: requestField
+                                        }),
+                                        //
+
+                                        // Representative
+                                        ...insertByCondition(isRepresentative, {
+                                            label: "Solicitud del Representante",
+                                            fields: requestRepresentativeField
+                                        }),
+                                        ...insertByCondition(isRepresentative, {
+                                            label: "Solicitud del Paciente",
+                                            fields: requestField
+                                        }),
+                                        //
                                         {
                                             label: "Dirección",
                                             fields: streetAddressRequest
