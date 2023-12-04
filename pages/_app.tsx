@@ -1,4 +1,5 @@
 import '../scss/style.scss'
+import 'dayjs/locale/es-do'
 
 import Snackbar from '@components/app/extended/Snackbar'
 import SweetAlert from '@components/app/extended/SweetAlert'
@@ -16,6 +17,7 @@ import Loader from '@components/app/Loader'
 import { LocalizationProvider } from '@mui/x-date-pickers'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import CaseModal from '@components/app/extended/CaseModal'
+import dayjs from 'dayjs'
 
 function MyApp(props: AppPropsLayout) {
 	const getLayout = props.Component.getLayout || ((page) => page)
@@ -25,13 +27,14 @@ function MyApp(props: AppPropsLayout) {
 	useEffect(() => {
 		initTranslator(() => {
 			setShowPage(true)
+			dayjs.locale('es-do')
 		})
 	}, [])
 
 	if (!showPage) return <Loader />
 
 	return (
-		<LocalizationProvider dateAdapter={AdapterDayjs}>
+		<LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale='es-do'>
 			<I18nextProvider i18n={i18nCustom}>
 				<Provider store={store}>
 					<ConfigProvider>

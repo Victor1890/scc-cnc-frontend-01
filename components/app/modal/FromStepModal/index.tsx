@@ -12,7 +12,7 @@ import {
 } from '@mui/material';
 import { Fragment, useEffect, useState } from 'react';
 import FormInput from '../FormModal/FormInput';
-import { Entity } from '../FormModal/FormModal.interface';
+import { Entity, FieldConfig } from '../FormModal/FormModal.interface';
 import { EntityStepModalPropsI } from './FromStepModal.interface';
 
 const FormStepModal = <T extends object>({
@@ -60,16 +60,20 @@ const FormStepModal = <T extends object>({
 		const stepField = stepFields[step]
 		if (!stepField) return <div>404: Not Found</div>
 
-		return (
+		const isArray = Array.isArray(stepField.fields)
+
+		const data = isArray ? (
 			<FormInput<T>
 				isEditMode={true}
-				setIsEditMode={setIsEditMode}
-				fields={stepField.fields}
+				setIsEditMode={() => { }}
+				fields={stepField.fields as FieldConfig<T>[]}
 				errors={errors}
 				form={form}
 				setForm={setForm}
 			/>
-		)
+		) : stepField.fields as React.ReactNode
+
+		return data
 	}
 
 	useEffect(() => {
@@ -80,7 +84,10 @@ const FormStepModal = <T extends object>({
 			const defaultFormState: Entity<T> = {} as Entity<T>
 
 			stepFields.forEach(stepField => {
-				stepField.fields.forEach((field) => {
+				const isArray = Array.isArray(stepField.fields)
+				if (!isArray) return
+
+				(stepField.fields as FieldConfig<T>[]).forEach((field) => {
 					if ('value' in field) {
 						defaultFormState[field.name as keyof T] = field.value
 					}

@@ -1,4 +1,4 @@
-import { Entity } from "@components/app/modal/FormModal/FormModal.interface";
+import { Entity, FieldConfig } from "@components/app/modal/FormModal/FormModal.interface";
 import {
     Button,
     Dialog,
@@ -58,11 +58,15 @@ const FormWhodaStepModal = <T extends object>({
         const stepField = stepFields[step]
         if (!stepField) return <div>404: Not Found</div>
 
-        return (
+        const isArray = Array.isArray(stepField.fields)
+
+        const data = isArray ? (
             <FormInputWhoda<T>
-                fields={stepField.fields}
+                fields={stepField.fields as FieldConfig<T>[]}
             />
-        )
+        ) : stepField.fields as React.ReactNode
+
+        return data
     }
 
     useEffect(() => {
@@ -73,7 +77,10 @@ const FormWhodaStepModal = <T extends object>({
             const defaultFormState: Entity<T> = {} as Entity<T>
 
             stepFields.forEach(stepField => {
-                stepField.fields.forEach((field) => {
+                const isArray = Array.isArray(stepField.fields)
+                if (!isArray) return
+
+                (stepField.fields as FieldConfig<T>[]).forEach((field) => {
                     if ('value' in field) {
                         defaultFormState[field.name as keyof T] = field.value
                     }

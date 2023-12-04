@@ -1,4 +1,4 @@
-import InputFile from "@components/app/input-file"
+import InputFile from '@components/app/input-file'
 import CloseIcon from '@mui/icons-material/Close'
 import {
     Divider,
@@ -23,14 +23,14 @@ import {
     useTheme,
     TableHead,
     Paper
-} from "@mui/material"
-import Autocomplete from '@mui/material/Autocomplete'
+} from '@mui/material'
 import { DatePicker } from '@mui/x-date-pickers'
-import dayjs, { Dayjs } from "dayjs"
+import Autocomplete from '@mui/material/Autocomplete'
+import dayjs, { Dayjs } from 'dayjs'
 import { MuiTelInput } from 'mui-tel-input'
-import { ChangeEvent } from "react"
-import { UISwitch } from "./FormInput.style"
-import { FormInputPropsI, OptionIFieldConfigI, RightPositionI } from "./FormModal.interface"
+import { ChangeEvent } from 'react'
+import { UISwitch } from './FormInput.style'
+import { FormInputPropsI, OptionIFieldConfigI, RightPositionI } from './FormModal.interface'
 
 const FormInput = <T extends object>({
     errors,
@@ -38,9 +38,8 @@ const FormInput = <T extends object>({
     rightPosition,
     form,
     isEditMode,
-    setForm,
+    setForm
 }: FormInputPropsI<T> & { rightPosition?: RightPositionI }) => {
-
     const theme = useTheme()
 
     const handleInputChange = (
@@ -80,18 +79,15 @@ const FormInput = <T extends object>({
         <Grid item xs={12 - (rightPosition?.col || 0)}>
             <Grid container spacing={2} padding={1}>
                 {fields.map((field, index) => {
-                    const name = field.name as keyof T;
-                    const valueFile = field.value instanceof File ? field.value as File : null;
-                    const valueOptions = field.value instanceof OptionIFieldConfigI ? field.value as OptionIFieldConfigI[] : null
-                    const value = typeof field.value === 'string' ? field.value as string : null
-                    const valueBoolean = typeof field.value === 'boolean' ? field.value as boolean : false
+                    const name = field.name as keyof T
+                    const valueFile = field.value instanceof File ? (field.value as File) : null
+                    const valueOptions =
+                        field.value instanceof OptionIFieldConfigI ? (field.value as OptionIFieldConfigI[]) : null
+                    const value = typeof field.value === 'string' ? (field.value as string) : null
+                    const valueBoolean = typeof field.value === 'boolean' ? (field.value as boolean) : false
 
                     return (
-                        <Grid
-                            item
-                            {...field.responsive ? field.responsive : {}}
-                            key={`field-${index}`}
-                        >
+                        <Grid item {...(field.responsive ? field.responsive : {})} key={`field-${index}`}>
                             {field.type === 'divider' && (
                                 <Divider>
                                     {field.label && (
@@ -103,7 +99,7 @@ const FormInput = <T extends object>({
                             )}
                             {field.type === 'text' || field.type === 'textarea' || field.type === 'email' || field.type === 'number' ? (
                                 <FormControl fullWidth>
-                                    <FormLabel htmlFor={`field-${field.type}-${String(name)}`} sx={{ color: "#000" }}>
+                                    <FormLabel htmlFor={`field-${field.type}-${String(name)}`} sx={{ color: '#000' }}>
                                         {field.label}
                                     </FormLabel>
                                     <TextField
@@ -114,18 +110,22 @@ const FormInput = <T extends object>({
                                         fullWidth
                                         multiline={field.type === 'textarea'}
                                         error={errors && errors[name] ? true : false}
-                                        helperText={errors && errors[name] ? errors[name] : ""}
+                                        helperText={errors && errors[name] ? errors[name] : ''}
                                         value={value || form[name] || ''}
                                         disabled={field.disabled ? field.disabled : !isEditMode}
-                                        inputProps={field.type === 'textarea' ? {
-                                            style: {
-                                                height: "50px",
-                                            },
-                                        } : {}}
-                                        onChange={e => {
+                                        inputProps={
+                                            field.type === 'textarea'
+                                                ? {
+                                                    style: {
+                                                        height: '50px'
+                                                    }
+                                                }
+                                                : {}
+                                        }
+                                        onChange={(e) => {
                                             const { value } = e.target
                                             const _value = value || value || form[name] || ''
-                                            typeof field.handleChange == "function" && field.handleChange(_value)
+                                            typeof field.handleChange == 'function' && field.handleChange(_value)
                                             handleInputChange(e)
                                         }}
                                         {...(field.startAdornment && {
@@ -140,7 +140,9 @@ const FormInput = <T extends object>({
                             ) : null}
                             {field.type === 'tel' && (
                                 <FormControl fullWidth>
-                                    <FormLabel sx={{ color: "#000" }} htmlFor={`field-${field.type}-${String(name)}`}>{field.label}</FormLabel>
+                                    <FormLabel sx={{ color: '#000' }} htmlFor={`field-${field.type}-${String(name)}`}>
+                                        {field.label}
+                                    </FormLabel>
                                     <MuiTelInput
                                         defaultCountry="DO"
                                         name={String(name)}
@@ -148,12 +150,12 @@ const FormInput = <T extends object>({
                                         placeholder={field.placeholder}
                                         fullWidth
                                         error={errors && errors[name] ? true : false}
-                                        helperText={errors && errors[name] ? errors[name] : ""}
+                                        helperText={errors && errors[name] ? errors[name] : ''}
                                         value={value || form[name] || ''}
                                         disabled={field.disabled ? field.disabled : !isEditMode}
                                         onChange={(value) => {
                                             const _value = value || value || form[name] || ''
-                                            typeof field.handleChange == "function" && field.handleChange(_value)
+                                            typeof field.handleChange == 'function' && field.handleChange(_value)
                                             handleTelChange(String(name), _value)
                                         }}
                                         {...(field.startAdornment && {
@@ -168,31 +170,33 @@ const FormInput = <T extends object>({
                             )}
                             {field.type === 'file' && (
                                 <FormControl fullWidth>
-                                    <FormLabel sx={{ color: "#000" }} htmlFor={`field-${field.type}-${String(name)}`}>{field.label}</FormLabel>
+                                    <FormLabel sx={{ color: '#000' }} htmlFor={`field-${field.type}-${String(name)}`}>
+                                        {field.label}
+                                    </FormLabel>
                                     <InputFile
                                         name={String(name)}
                                         id={`field-${field.type}-${String(name)}`}
-                                        placeholder={field.placeholder || "Insert a file"}
+                                        placeholder={field.placeholder || 'Insert a file'}
                                         fullWidth
                                         required
                                         error={errors && errors[name] ? true : false}
-                                        helperText={errors && errors[name] ? errors[name] : ""}
+                                        helperText={errors && errors[name] ? errors[name] : ''}
                                         value={valueFile || form[name] || null}
                                         disabled={field.disabled ? field.disabled : !isEditMode}
                                         onChange={(value) => {
                                             const _value = value || valueFile || form[name]
-                                            typeof field.handleChange == "function" && field.handleChange(_value)
+                                            typeof field.handleChange == 'function' && field.handleChange(_value)
                                             handleFileChange(String(name), _value)
                                         }}
                                         inputProps={{
-                                            accept: ".jpg, .jpeg, .png, .pdf",
-                                            color: "black"
+                                            accept: '.jpg, .jpeg, .png, .pdf',
+                                            color: 'black'
                                         }}
                                         clearIconButtonProps={{
-                                            title: "Remover",
+                                            title: 'Remover',
                                             children: <CloseIcon fontSize="small" />,
                                             onClick: () => {
-                                                typeof field.handleChange == "function" && field.handleChange(null)
+                                                typeof field.handleChange == 'function' && field.handleChange(null)
                                                 handleFileChange(String(name), null)
                                             }
                                         }}
@@ -208,7 +212,9 @@ const FormInput = <T extends object>({
                             )}
                             {field.type === 'date' && (
                                 <FormControl fullWidth>
-                                    <FormLabel htmlFor={`field-${field.type}-${String(name)}`} sx={{ color: "#000" }}>{field.label}</FormLabel>
+                                    <FormLabel htmlFor={`field-${field.type}-${String(name)}`} sx={{ color: '#000' }}>
+                                        {field.label}
+                                    </FormLabel>
                                     <DatePicker
                                         value={dayjs(form[name])}
                                         disabled={field.disabled ? field.disabled : !isEditMode}
@@ -221,7 +227,7 @@ const FormInput = <T extends object>({
                                         }}
                                         onChange={(date) => {
                                             const _value = date || value || form[name] || ''
-                                            typeof field.handleChange == "function" && field.handleChange(_value)
+                                            typeof field.handleChange == 'function' && field.handleChange(_value)
                                             handleDateChange(String(name), date)
                                         }}
                                     />
@@ -229,7 +235,9 @@ const FormInput = <T extends object>({
                             )}
                             {field.type === 'select' && (
                                 <FormControl fullWidth>
-                                    <FormLabel htmlFor={`field-${field.type}-${String(name)}`} sx={{ color: "#000" }}>{field.label}</FormLabel>
+                                    <FormLabel htmlFor={`field-${field.type}-${String(name)}`} sx={{ color: '#000' }}>
+                                        {field.label}
+                                    </FormLabel>
                                     <Select
                                         name={String(name)}
                                         id={`field-${field.type}-${String(name)}`}
@@ -237,10 +245,10 @@ const FormInput = <T extends object>({
                                         placeholder={field.placeholder}
                                         disabled={field.disabled ? field.disabled : !isEditMode}
                                         error={errors && errors[name] ? true : false}
-                                        onChange={e => {
+                                        onChange={(e) => {
                                             const { value } = e.target
                                             const _value = value || value || form[name] || ''
-                                            typeof field.handleChange == "function" && field.handleChange(_value)
+                                            typeof field.handleChange == 'function' && field.handleChange(_value)
                                             handleInputChange(e)
                                         }}
                                     >
@@ -250,7 +258,7 @@ const FormInput = <T extends object>({
                                             </MenuItem>
                                         ))}
                                     </Select>
-                                    {(errors && errors[name]) && <FormHelperText error>{errors[name]}</FormHelperText>}
+                                    {errors && errors[name] && <FormHelperText error>{errors[name]}</FormHelperText>}
                                 </FormControl>
                             )}
                             {field.type === 'multi-select' && (
@@ -259,40 +267,37 @@ const FormInput = <T extends object>({
                                     <Autocomplete
                                         id={`field-${field.type}-${String(name)}`}
                                         multiple
-                                        options={(field.options || [])}
+                                        options={field.options || []}
                                         getOptionLabel={(option) => option.label}
                                         value={valueOptions || form[name]}
                                         disableCloseOnSelect
                                         disabled={field.disabled ? field.disabled : !isEditMode}
                                         onChange={(_, values) => {
-                                            const data = values.map(x => x.value)
-                                            typeof field.handleChange == "function" && field.handleChange(data)
+                                            const data = values.map((x) => x.value)
+                                            typeof field.handleChange == 'function' && field.handleChange(data)
                                             handleMultiSelectChange(String(name), data)
                                         }}
                                         renderInput={(params) => (
-                                            <TextField
-                                                {...params}
-                                                variant="outlined"
-                                                placeholder={field.placeholder}
-                                            />
+                                            <TextField {...params} variant="outlined" placeholder={field.placeholder} />
                                         )}
                                     />
-                                    {(errors && errors[name]) && <FormHelperText error>{errors[name]}</FormHelperText>}
+                                    {errors && errors[name] && <FormHelperText error>{errors[name]}</FormHelperText>}
                                 </FormControl>
                             )}
                             {field.type === 'switch' && (
                                 <Stack direction="row" alignItems="center">
-                                    <Typography variant="h5" width={"100%"}>{field.placeholder || field.label}</Typography>
+                                    <Typography variant="h5" width={'100%'}>
+                                        {field.placeholder || field.label}
+                                    </Typography>
                                     <UISwitch
                                         name={String(name)}
                                         checked={valueBoolean || form[name]}
-
                                         disabled={field.disabled ? field.disabled : !isEditMode}
                                         onChange={(e) => {
                                             const checked = e.target.checked
                                             const _value = checked || field.value || form[name] || false
 
-                                            typeof field.handleChange == "function" && field.handleChange(_value)
+                                            typeof field.handleChange == 'function' && field.handleChange(_value)
 
                                             handleSwitchChange(String(name), checked)
                                         }}
@@ -301,13 +306,18 @@ const FormInput = <T extends object>({
                             )}
                             {field.type === 'list' && (
                                 <FormControl fullWidth>
-                                    <Grid key={`field-list-${index}`} container spacing={1} padding={1} alignItems='center'>
+                                    <Grid key={`field-list-${index}`} container spacing={1} padding={1} alignItems="center">
                                         <TableContainer component={Paper}>
                                             <Table>
                                                 <TableHead>
                                                     <TableRow>
-                                                        <TableCell sx={{ width: "calc(100% - 24px)" }}>
-                                                            <Typography fontSize={14} fontWeight={"700"} variant="h3" color={theme.palette.primary.main}>
+                                                        <TableCell sx={{ width: 'calc(100% - 24px)' }}>
+                                                            <Typography
+                                                                fontSize={14}
+                                                                fontWeight={'700'}
+                                                                variant="h3"
+                                                                color={theme.palette.primary.main}
+                                                            >
                                                                 {field.label}
                                                             </Typography>
                                                         </TableCell>
@@ -318,15 +328,19 @@ const FormInput = <T extends object>({
                                                         ))}
                                                     </TableRow>
                                                 </TableHead>
-                                                {(field.listOptions || []).map(option => (
+                                                {(field.listOptions || []).map((option) => (
                                                     <TableBody key={`field-table-row-${index}`} component={RadioGroup}>
                                                         <TableRow hover key={`field-table-row-${index}`}>
                                                             <TableCell align="left">
                                                                 <Typography variant="h5">{option.title}</Typography>
                                                             </TableCell>
                                                             {option.values.map(({ label, value }, index) => (
-                                                                <TableCell width={"20%"} key={`field-table-row-${index}`}>
-                                                                    <Radio aria-label={label} value={value} disabled={!isEditMode} />
+                                                                <TableCell width={'20%'} key={`field-table-row-${index}`}>
+                                                                    <Radio
+                                                                        aria-label={label}
+                                                                        value={value}
+                                                                        disabled={!isEditMode}
+                                                                    />
                                                                 </TableCell>
                                                             ))}
                                                         </TableRow>
@@ -340,7 +354,9 @@ const FormInput = <T extends object>({
                             {field.type === 'paragraph' && (
                                 <FormControl fullWidth>
                                     {(field.paragraphs || []).map((paragraph, index) => (
-                                        <Typography fontSize={16} paragraph key={`${paragraph}-${index}`} variant="h5">{paragraph}</Typography>
+                                        <Typography fontSize={16} paragraph key={`${paragraph}-${index}`} variant="h5">
+                                            {paragraph}
+                                        </Typography>
                                     ))}
                                 </FormControl>
                             )}

@@ -4,7 +4,7 @@ import { ExcludeProperties } from '@interfaces/common/common.interface'
 
 export interface IStepField<T> {
 	label: string | React.ReactNode
-	fields: FieldConfig<T>[]
+	fields: React.JSX.Element | FieldConfig<T>[]
 }
 
 export interface EntityStepModalPropsI<T> extends ExcludeProperties<FormInputPropsI<T>, 'form' | 'setForm' | 'isEditMode' | 'setIsEditMode' | 'fields'> {

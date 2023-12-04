@@ -2,6 +2,33 @@ import { FieldConfig } from "@components/app/modal/FormModal/FormModal.interface
 
 export const requestField: FieldConfig<any>[] = [
     {
+        label: "Documento de identidad",
+        name: "documentType",
+        type: 'select',
+        options: [
+            {
+                label: "Cédula",
+                value: "cedula"
+            },
+            {
+                label: "Pasaporte",
+                value: "pasaporte"
+            },
+        ],
+        responsive: {
+            xs: 6
+        }
+    },
+    {
+        label: "Número de documento de identidad",
+        name: "identification",
+        placeholder: "000-0000000-0",
+        type: 'text',
+        responsive: {
+            xs: 6
+        }
+    },
+    {
         label: "Nombre",
         name: "firstName",
         type: 'text',
@@ -66,32 +93,5 @@ export const requestField: FieldConfig<any>[] = [
         responsive: {
             xs: 6
         }
-    },
-    {
-        label: "Documento de identidad",
-        name: "documentType",
-        type: 'select',
-        options: [
-            {
-                label: "Cédula",
-                value: "cedula"
-            },
-            {
-                label: "Pasaporte",
-                value: "pasaporte"
-            },
-        ],
-        responsive: {
-            xs: 6
-        }
-    },
-    {
-        label: "Número de documento de identidad",
-        name: "identification",
-        placeholder: "000-0000000-0",
-        type: 'text',
-        responsive: {
-            xs: 6
-        }
-    },
+    }
 ]
