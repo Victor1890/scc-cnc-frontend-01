@@ -67,28 +67,28 @@ function CreateCaseModal({
                     fields: motiveRequest
                 },
                 ...insertByCondition(isPatient, {
-                    label: "Solicitud",
+                    label: "Información",
                     fields: requestField
                 }),
 
                 // Institution
                 ...insertByCondition(isInstitution, {
-                    label: "Solicitud de la Institución",
+                    label: "Información de la Institución",
                     fields: requestInstitutionField
                 }),
                 ...insertByCondition(isInstitution, {
-                    label: "Solicitud del Paciente",
+                    label: "Información del Paciente",
                     fields: requestField
                 }),
                 //
 
                 // Representative
                 ...insertByCondition(isRepresentative, {
-                    label: "Solicitud del Representante",
+                    label: "Información del Representante",
                     fields: requestRepresentativeField
                 }),
                 ...insertByCondition(isRepresentative, {
-                    label: "Solicitud del Paciente",
+                    label: "Información del Paciente",
                     fields: requestField
                 }),
                 //

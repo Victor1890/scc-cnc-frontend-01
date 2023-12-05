@@ -9,14 +9,8 @@ import {
 } from '@mui/material';
 import { closeCaseModal } from '@redux/slices/ui/modalCase';
 import { dispatch, useAppSelector } from '@redux/store';
-import Image from 'next/image';
+import { IconStatus } from '@utils/images/image.util';
 import { Fragment } from 'react';
-
-const LogoModalStatus = {
-    check: <Image priority height={40} width={40} src='/assets/images/modal/check.svg' alt='check' />,
-    danger: <Image priority height={40} width={40} src='/assets/images/modal/danger.svg' alt='danger' />,
-    warning: <Image priority height={40} width={40} src='/assets/images/modal/warn.svg' alt='warning' />,
-}
 
 const CaseModal = () => {
     const {
@@ -44,7 +38,7 @@ const CaseModal = () => {
             <DialogContent>
                 <Grid container direction={'column'} justifyContent={'center'} alignItems={'center'}>
                     <Grid item justifyContent={'center'} alignItems={'center'} sx={{ pb: 2 }}>
-                        {LogoModalStatus[logo || 'check']}
+                        {IconStatus()[logo || 'check']}
                     </Grid>
                     <Grid item justifyContent={'center'} alignItems={'center'}>
 

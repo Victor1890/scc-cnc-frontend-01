@@ -12,6 +12,7 @@ import { IAuthSchedulerProps } from './scheduler.interface'
 import FormInput from '@components/app/modal/FormModal/FormInput'
 import { Entity, FieldConfig } from '@components/app/modal/FormModal/FormModal.interface'
 import { useAppSelector } from '@redux/store'
+import ThankYou from './thank-you'
 
 const AuthScheduler = <T extends object>({
     stepFields
@@ -99,23 +100,22 @@ const AuthScheduler = <T extends object>({
             <>
                 {activeStep === stepFields.length ? (
                     <>
-                        <Typography variant="subtitle1">
-                            Gracias por agendar
-                        </Typography>
+                        <ThankYou />
                         <Stack direction="row" justifyContent="flex-end">
                             <AnimateButton>
                                 <Button
                                     variant="contained"
                                     color="error"
+
                                     onClick={() => {
                                         setActiveStep(0);
                                         setForm({} as Entity<T>)
                                         setErrors(null)
                                         setErrorIndex(null)
                                     }}
-                                    sx={{ my: 3, ml: 1 }}
+                                    sx={{ my: 3, ml: 1, textTransform: 'none' }}
                                 >
-                                    Agendar de nuevo?
+                                    Finalizar
                                 </Button>
                             </AnimateButton>
                         </Stack>
