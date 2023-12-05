@@ -6,7 +6,7 @@
   "license": "UNLICENSED",
   "private": true,
   "scripts": {
-    "dev": "next -p 3001",
+    "dev": "next",
     "build": "next build",
     "start": "next start -p 3001",
     "type-check": "tsc"
