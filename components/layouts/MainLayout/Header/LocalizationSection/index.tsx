@@ -136,6 +136,7 @@ const LocalizationSection = () => {
       </Box>
 
       <Popper
+        placeholder=''
         placement={matchesXs ? 'bottom-start' : 'bottom'}
         open={open}
         anchorEl={anchorRef.current}
