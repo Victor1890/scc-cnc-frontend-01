@@ -1,6 +1,5 @@
 import Loader from '@components/app/Loader';
 import AnimateButton from '@components/app/extended/AnimateButton';
-import Breadcrumbs from '@components/app/extended/Breadcrumbs';
 import { LAYOUT_CONST } from '@constants/layout';
 import { drawerWidth } from '@constants/theme';
 import useConfig from '@hooks/useThemeConfig';
@@ -8,10 +7,8 @@ import { AppBar, Box, Button, Container, CssBaseline, Toolbar, useMediaQuery } f
 import { Theme, styled, useTheme } from '@mui/material/styles';
 import { openDrawer } from '@redux/slices/ui/menu';
 import { useAppDispatch, useAppSelector } from '@redux/store';
-import { IconChevronRight } from '@tabler/icons';
 import { Fragment, useEffect, useMemo } from 'react';
 import { ToastBar, Toaster, toast } from 'react-hot-toast';
-import navigation from '../../../settings/menu-items';
 import { MainLayoutPropsI } from '../layout.interface';
 import Header from './Header';
 import HorizontalBar from './HorizontalBar';
@@ -162,7 +159,7 @@ const MainLayout = ({ children }: MainLayoutPropsI) => {
           open={drawerOpen}
           layout={layout}>
           <Container maxWidth={container ? 'lg' : false} {...(!container && { sx: { px: { xs: 0 } } })}>
-            <Breadcrumbs separator={IconChevronRight} navigation={navigation} icon title rightAlign />
+            {/* <Breadcrumbs separator={IconChevronRight} navigation={navigation} icon title rightAlign /> */}
             {children}
           </Container>
         </Main>
