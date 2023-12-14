@@ -10,8 +10,9 @@ import {
 } from '@mui/material';
 import { EntityReceptionistModalPropsI } from './ModalReceptionist.interface';
 import ReceptionistTable from './table';
-import InputFile from '@components/app/input-file';
 import { useState } from 'react';
+import FormInput from '@components/app/modal/FormModal/FormInput';
+import { documentRequest } from '../create-case/fields';
 
 const ModalReceptionist = <T extends object>({
     open,
@@ -22,7 +23,7 @@ const ModalReceptionist = <T extends object>({
 
     const theme = useTheme()
 
-    const [file, setFile] = useState<File | null>(null)
+    const [form, setForm] = useState<any>({})
 
     const handleClose = () => {
         onClose()
@@ -38,27 +39,23 @@ const ModalReceptionist = <T extends object>({
                 {entityName}
             </DialogTitle>
             <DialogContent>
-                <Grid container>
-                    <Grid item xs={12} justifyContent={'center'} alignItems={'center'}>
-                        <Typography variant="h6" sx={{ color: theme.palette.primary.main }}>Datos del paciente</Typography>
-                        <ReceptionistTable />
-                        <Typography sx={{ paddingBottom: 2, paddingTop: 3 }} variant="h6">Datos del paciente</Typography>
-                        <Grid container xs={12} spacing={2}>
-                            <Grid item xs={6}>
-                                <InputFile
-                                    value={file}
-                                    placeholder={"Documento de Identificación (PDF)"}
-                                    onChange={(file) => {
-                                        if (!file) return
-                                        if (Array.isArray(file)) return
-                                        setFile(file)
-                                    }}
-                                />
+                <Grid container spacing={2}>
+                    <Grid item justifyContent={'center'} alignItems={'center'}>
+                        <Grid item container>
+                            <Grid item>
+                                <Typography sx={{ paddingLeft: 1 }} variant="h6">Datos del paciente</Typography>
                             </Grid>
-                            <Grid item xs={6}>
-                                <InputFile
-                                    value={null}
-                                    placeholder={"Estudios complementarios (PDF)"}
+                            <ReceptionistTable />
+                        </Grid>
+                        <Grid container item sx={{ paddingTop: 3 }}>
+                            <Grid item>
+                                <Typography sx={{ paddingLeft: 1 }} variant="h6">Datos del paciente</Typography>
+                            </Grid>
+                            <Grid item sx={{ paddingTop: 1 }}>
+                                <FormInput<any>
+                                    form={form}
+                                    setForm={setForm}
+                                    fields={documentRequest}
                                 />
                             </Grid>
                         </Grid>

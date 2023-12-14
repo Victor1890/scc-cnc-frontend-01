@@ -49,7 +49,7 @@ const SchedulePageComponent = () => {
                                     stepFields={[
                                         {
                                             label: "Seleccionar",
-                                            fields: SelectPatientType()
+                                            fields: <SelectPatientType />
                                         },
                                         {
                                             label: "Motivos",
@@ -91,7 +91,7 @@ const SchedulePageComponent = () => {
                                         },
                                         {
                                             label: "Cita",
-                                            fields: CalendarSchedule()
+                                            fields: <CalendarSchedule />
                                         }
                                     ]}
                                 />

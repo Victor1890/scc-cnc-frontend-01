@@ -9,9 +9,6 @@ import { IconSearch } from '@tabler/icons';
 import Page from "@components/app/Page"
 import MainCard from "@components/app/cards/MainCard"
 import { gridSpacing } from "@constants/theme"
-import ModalReceptionist from "./modal/receptionist";
-import UploadDocumentForm from "./modal/upload-document-form";
-import SelectDocumentForm from "./modal/select-document-form";
 import BiomedicalModal from "./modal/biomedical";
 import { useState } from "react";
 import { ModalModeType } from "@interfaces/modal/modal.interface";
@@ -25,9 +22,9 @@ const RequestComponentPage = () => {
 
     const [modalMode, setModalMode] = useState<ModalModeType>('create')
     const [openModal, setOpenModal] = useState(false)
-    const [openModalReceptionist, setOpenModalReceptionist] = useState(false)
-    const [openDocumentFormModal, setOpenDocumentFormModal] = useState(false)
-    const [openSelectDocumentFormModal, setOpenSelectDocumentFormModal] = useState(false)
+    // const [openModalReceptionist, setOpenModalReceptionist] = useState(false)
+    // const [openDocumentFormModal, setOpenDocumentFormModal] = useState(false)
+    // const [openSelectDocumentFormModal, setOpenSelectDocumentFormModal] = useState(false)
 
     const handleChange = () => { }
 
@@ -88,38 +85,6 @@ const RequestComponentPage = () => {
                     mode={modalMode}
                     open={openModal}
                     setOpenModal={setOpenModal}
-                />
-                <ModalReceptionist
-                    open={openModalReceptionist}
-                    entityName="Victor Rosario"
-                    onClose={() => {
-                        setOpenModalReceptionist(false)
-                    }}
-                    onSubmit={() => {
-                        setOpenModalReceptionist(false)
-                        setOpenDocumentFormModal(true)
-                    }}
-                />
-                <UploadDocumentForm
-                    open={openDocumentFormModal}
-                    onClose={() => {
-                        setOpenDocumentFormModal(false)
-                        setOpenModal(true)
-                    }}
-                    onClickForm={() => {
-                        setOpenSelectDocumentFormModal(true)
-                        setOpenDocumentFormModal(false)
-                    }}
-                />
-                <SelectDocumentForm
-                    open={openSelectDocumentFormModal}
-                    onBack={() => {
-                        setOpenSelectDocumentFormModal(false)
-                        setOpenDocumentFormModal(true)
-                    }}
-                    onClose={() => {
-                        setOpenSelectDocumentFormModal(false)
-                    }}
                 />
                 <BiomedicalModal />
                 <ContextualModal />

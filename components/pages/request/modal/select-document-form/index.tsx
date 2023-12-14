@@ -73,11 +73,12 @@ const SelectDocumentForm = ({ onClose, onBack, open }: EntitySelectDocumentFormM
                 >
                 </Grid>
                 <Grid container paddingTop={1} width={'100%'}>
-                    <ButtonDocumentFormItem title="Ficha de información biomadica" onClick={handleClickBiomedical} />
-                    <ButtonDocumentFormItem title="Contextual" onClick={handleClickContextual} paddingBoxLeft={'65%'} />
-                    <ButtonDocumentFormItem title="Whoda Bebé" onClick={() => handleClickWhodas("Whoda Bebé")} paddingBoxLeft={'62%'} />
-                    <ButtonDocumentFormItem title="Whoda Niños y Jóvenes" onClick={() => handleClickWhodas("Whoda Niños y Jóvenes")} paddingBoxLeft={'42%'} />
-                    <ButtonDocumentFormItem title="Whoda Adultos" onClick={() => handleClickWhodas("Whoda Adultos")} paddingBoxLeft={'57%'} />
+                    <ButtonDocumentFormItem title="Ficha de información biomédical" onClick={handleClickBiomedical} />
+                    <ButtonDocumentFormItem title="Contextual" onClick={handleClickContextual} />
+                    <ButtonDocumentFormItem title="Whodas Bebé" onClick={() => handleClickWhodas("Whodas Bebé")} />
+                    <ButtonDocumentFormItem title="Whodas Niños" onClick={() => handleClickWhodas("Whodas Niños")} />
+                    <ButtonDocumentFormItem title="Whodas Jóvenes" onClick={() => handleClickWhodas("Whodas Jóvenes")} />
+                    <ButtonDocumentFormItem title="Whodas Adultos" onClick={() => handleClickWhodas("Whodas Adultos")} />
                 </Grid>
             </DialogContent>
             <DialogActions sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>

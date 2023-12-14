@@ -1,5 +1,4 @@
 import {
-    Box,
     Button,
     Grid,
     Typography,
@@ -11,23 +10,24 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 interface IButtonDocumentFormItem {
     title: string
     onClick: VoidFunction
-    paddingBoxLeft?: string | number
 }
 
-const ButtonDocumentFormItem = ({ title = "default", paddingBoxLeft, onClick }: IButtonDocumentFormItem) => {
+const ButtonDocumentFormItem = ({ title = "default", onClick }: IButtonDocumentFormItem) => {
 
     const theme = useTheme()
 
     return (
         <Grid item width={"100%"} justifyContent={'flex-start'} paddingBottom={1}>
             <Button onClick={onClick} sx={{ width: "100%", backgroundColor: theme.palette.primary.light, display: "flex", justifyContent: 'space-evenly', alignItems: 'center' }}>
-                <Box display={'flex'} alignItems={'center'} justifyContent={'space-evenly'}>
-                    <ArticleIcon />
-                    <Typography paddingLeft={1} textAlign={'center'} color={theme.palette.primary.main} variant="h5">{title}</Typography>
-                </Box>
-                <Box paddingLeft={paddingBoxLeft || "30%"} display={'flex'} alignItems={'center'} justifyContent={'center'}>
-                    <ArrowForwardIcon />
-                </Box>
+                <Grid direction={'row'} container justifyContent={'space-between'} alignItems={'center'}>
+                    <Grid container item xs={8} display={'flex'} justifyContent={'start'} alignItems={'center'}>
+                        <ArticleIcon />
+                        <Typography paddingLeft={1} textAlign={'left'} color={theme.palette.primary.main} variant="h5">{title}</Typography>
+                    </Grid>
+                    <Grid item xs={1} display={'flex'} justifyContent={'center'} alignItems={'center'}>
+                        <ArrowForwardIcon />
+                    </Grid>
+                </Grid>
             </Button>
         </Grid>
     )

@@ -10,9 +10,10 @@ import {
 } from '@mui/material';
 import AssessmentIcon from '@mui/icons-material/Assessment';
 import EyeIcon from '@mui/icons-material/RemoveRedEye'
-import { insertByCondition } from "@utils/array/array.util";
+// import EditIcon from '@mui/icons-material/Edit';
+import FeedIcon from '@mui/icons-material/Feed';
 
-function ColumnRequestTable({ children, onEdit, onReport }: IColumnRequestTableProps) {
+function ColumnRequestTable({ children, onEdit, onReport, onListForm }: IColumnRequestTableProps) {
 
     const theme = useTheme();
 
@@ -21,7 +22,7 @@ function ColumnRequestTable({ children, onEdit, onReport }: IColumnRequestTableP
             title: "Nombre completo",
             css: { paddingLeft: "2rem" },
             render: () => (
-                <span>Random LastName</span>
+                <span>John Wick</span>
             )
         },
         {
@@ -38,15 +39,9 @@ function ColumnRequestTable({ children, onEdit, onReport }: IColumnRequestTableP
             )
         },
         {
-            title: "Número de turno",
-            render: () => (
-                <span>T-1</span>
-            )
-        },
-        {
             title: "Fecha",
             render: () => (
-                <span>{new Date().toLocaleString()}</span>
+                <span>{new Date().toLocaleDateString()}</span>
             )
         },
         {
@@ -55,12 +50,22 @@ function ColumnRequestTable({ children, onEdit, onReport }: IColumnRequestTableP
                 <span>123456</span>
             )
         },
-        ...insertByCondition(typeof onEdit === 'function' || typeof onReport === 'function', {
+        {
             title: "Acciones",
             position: "center",
             render: ({ data }: any) => (
                 <Box sx={{ pr: 3 }}>
                     <Stack direction="row" justifyContent="center" alignItems="center">
+                        {/* <Tooltip placement="top" title={"Editar"}>
+                            <IconButton
+                                color="primary"
+                                aria-label={"Editar" || 'Edit'}
+                                size="large"
+                                onClick={() => onEdit?.('edit', data)}
+                            >
+                                <EditIcon sx={{ fontSize: '1.1rem' }} />
+                            </IconButton>
+                        </Tooltip> */}
                         <Tooltip placement="top" title={"Ver"}>
                             <IconButton
                                 color="primary"
@@ -81,10 +86,20 @@ function ColumnRequestTable({ children, onEdit, onReport }: IColumnRequestTableP
                                 <AssessmentIcon sx={{ fontSize: '1.1rem' }} />
                             </IconButton>
                         </Tooltip>
+                        <Tooltip placement="top" title={"Evaluar"}>
+                            <IconButton
+                                color="primary"
+                                aria-label={"Evaluar" || 'Forms'}
+                                size="large"
+                                onClick={() => onListForm?.('view', data)}
+                            >
+                                <FeedIcon sx={{ fontSize: '1.1rem' }} />
+                            </IconButton>
+                        </Tooltip>
                     </Stack>
                 </Box>
             )
-        })
+        }
     ]
 
     return children(columns)

@@ -5,8 +5,10 @@ import {
 } from "@mui/material";
 import { updateRequest } from "@redux/slices/request";
 import { useAppDispatch } from "@redux/store";
-import Image from "next/image";
 import { useEffect, useState } from "react";
+import EscalatorWarningRoundedIcon from '@mui/icons-material/EscalatorWarningRounded';
+import AccountBalanceRoundedIcon from '@mui/icons-material/AccountBalanceRounded';
+import AccessibleRoundedIcon from '@mui/icons-material/AccessibleRounded';
 
 const SelectPatientType = () => {
 
@@ -58,7 +60,7 @@ const SelectPatientType = () => {
                                         padding: 2
                                     }}
                                 >
-                                    <Image loading="lazy" width={100} height={100} src="/assets/images/modal/add-form.svg" alt="Formulario" />
+                                    <EscalatorWarningRoundedIcon width={100} height={100} sx={{ fontSize: 100 }} />
                                     <Typography textAlign={'center'} variant="h2" color={active.isRepresentative ? '#fff' : "#000"}>Representante</Typography>
                                     <Typography textAlign={'center'} variant="h2" color={active.isRepresentative ? '#fff' : "#000"}>Tutor Legal</Typography>
                                 </Button>
@@ -76,7 +78,7 @@ const SelectPatientType = () => {
                                         padding: 2
                                     }}
                                 >
-                                    <Image loading="lazy" width={100} height={100} src="/assets/images/modal/add-form.svg" alt="Formulario" />
+                                    <AccountBalanceRoundedIcon width={100} height={100} sx={{ fontSize: 100 }} />
                                     <Typography textAlign={'center'} variant="h2" color={active.isInstitution ? '#fff' : "#000"}>Institución</Typography>
                                 </Button>
                             </Grid>
@@ -93,7 +95,7 @@ const SelectPatientType = () => {
                                         padding: 2
                                     }}
                                 >
-                                    <Image loading="lazy" width={100} height={100} src="/assets/images/modal/add-form.svg" alt="Formulario" />
+                                    <AccessibleRoundedIcon width={100} height={100} sx={{ fontSize: 100 }} />
                                     <Typography textAlign={'center'} variant="h2" color={active.isPatient ? '#fff' : "#000"}>Persona</Typography>
                                     <Typography textAlign={'center'} variant="h2" color={active.isPatient ? '#fff' : "#000"}>con discapacidad</Typography>
                                 </Button>

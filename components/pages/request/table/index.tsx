@@ -2,7 +2,6 @@ import Table from "@components/app/table";
 import ColumnRequestTable from "./column";
 import { Fragment, useState } from "react";
 import ModalReceptionist from "../modal/receptionist";
-import UploadDocumentForm from "../modal/upload-document-form";
 import SelectDocumentForm from "../modal/select-document-form";
 import { useRouter } from 'next/router'
 import { generateUUID } from "@utils/strings/strings.util";
@@ -11,7 +10,6 @@ function RequestTable() {
 
     const router = useRouter()
     const [openModal, setOpenModal] = useState(false)
-    const [openDocumentFormModal, setOpenDocumentFormModal] = useState(false)
     const [openSelectDocumentFormModal, setOpenSelectDocumentFormModal] = useState(false)
     const [page, setPage] = useState(0)
 
@@ -23,6 +21,9 @@ function RequestTable() {
                 }}
                 onReport={() => {
                     router.push(`/requests/${generateUUID()}/report`)
+                }}
+                onListForm={() => {
+                    setOpenSelectDocumentFormModal(true)
                 }}
             >
                 {(columns) => (
@@ -47,25 +48,12 @@ function RequestTable() {
                 }}
                 onSubmit={() => {
                     setOpenModal(false)
-                    setOpenDocumentFormModal(true)
-                }}
-            />
-            <UploadDocumentForm
-                open={openDocumentFormModal}
-                onClose={() => {
-                    setOpenDocumentFormModal(false)
-                    setOpenModal(true)
-                }}
-                onClickForm={() => {
-                    setOpenSelectDocumentFormModal(true)
-                    setOpenDocumentFormModal(false)
                 }}
             />
             <SelectDocumentForm
                 open={openSelectDocumentFormModal}
                 onBack={() => {
                     setOpenSelectDocumentFormModal(false)
-                    setOpenDocumentFormModal(true)
                 }}
                 onClose={() => {
                     setOpenSelectDocumentFormModal(false)

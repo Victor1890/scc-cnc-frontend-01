@@ -1,6 +1,5 @@
 import {
     Box,
-    Button,
     FormControl,
     Grid,
     Typography,
@@ -101,7 +100,7 @@ const CalendarSchedule = () => {
                                 <Typography textAlign={'center'} variant="h4" textTransform={'capitalize'} paddingTop={matchDownMd ? 2 : 0}>
                                     {datetime}
                                 </Typography>
-                                <Grid item container spacing={1} gap={1}>
+                                {/* <Grid item container spacing={1} gap={1}>
                                     {[
                                         '08:00 AM',
                                         '09:00 AM',
@@ -125,7 +124,7 @@ const CalendarSchedule = () => {
                                             </Button>
                                         </Grid>
                                     ))}
-                                </Grid>
+                                </Grid> */}
                             </Grid>
                         </Grid>
                     </FormControl>

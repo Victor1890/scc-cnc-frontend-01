@@ -65,7 +65,29 @@ export const employment: FieldConfig<any>[] = [
     {
         label: '¿Cuál de los siguientes subsidios recibe su hogar?',
         name: 'random-10',
-        type: 'text',
+        type: 'select',
+        options: [
+            {
+                label: "Tarjeta Solidaridad",
+                value: "Tarjeta Solidaridad"
+            },
+            {
+                label: "Pensión por sobrevivencia",
+                value: "Pensión por sobrevivencia"
+            },
+            {
+                label: "Pensión por solidaria",
+                value: "Pensión por solidaria"
+            },
+            {
+                label: "Pensión por accidente laboral",
+                value: "Pensión por accidente laboral"
+            },
+            {
+                label: "Pensión por enfermedad laboral",
+                value: "Pensión por enfermedad laboral"
+            }
+        ],
         placeholder: 'Tarjeta Solidaridad o Pensión',
         responsive: {
             xs: 12
