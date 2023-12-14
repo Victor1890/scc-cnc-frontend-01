@@ -387,7 +387,6 @@ const RequestProfile = () => {
                                         <Grid item>
                                             <Button
                                                 variant='contained'
-                                                color='error'
                                                 startIcon={<GetAppIcon />}
                                                 onClick={onDownload}
                                             >
@@ -397,6 +396,7 @@ const RequestProfile = () => {
                                         <Grid item>
                                             <Button
                                                 variant='contained'
+                                                color='error'
                                                 startIcon={<GetAppIcon />}
                                                 onClick={onDownload}
                                             >
