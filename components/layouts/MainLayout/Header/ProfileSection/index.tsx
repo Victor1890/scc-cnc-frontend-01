@@ -111,6 +111,7 @@ const ProfileSection = () => {
         color="primary"
       />
       <Popper
+        placeholder=''
         placement="bottom-end"
         open={open}
         anchorEl={anchorRef.current}

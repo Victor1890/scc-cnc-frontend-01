@@ -228,6 +228,7 @@ const NavGroup = ({ item, lastItem, remItems, lastItemId }: NavGroupProps) => {
 
             {anchorEl && (
               <PopperStyled
+                placeholder=''
                 id={popperId}
                 open={openMini}
                 anchorEl={anchorEl}

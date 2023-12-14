@@ -90,6 +90,7 @@ const NotificationSection = () => {
       </Box>
 
       <Popper
+        placeholder=''
         placement={matchesXs ? 'bottom' : 'bottom-end'}
         open={open}
         anchorEl={anchorRef.current}

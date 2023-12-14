@@ -309,6 +309,7 @@ const NavCollapse = ({ menu, level, parentId }: NavCollapseProps) => {
 
             {!drawerOpen && (
               <PopperStyledMini
+                placeholder=''
                 open={openMini}
                 anchorEl={anchorEl}
                 placement="right-start"
@@ -394,6 +395,7 @@ const NavCollapse = ({ menu, level, parentId }: NavCollapseProps) => {
 
             {anchorEl && (
               <PopperStyled
+                placeholder=''
                 id={popperId}
                 open={openMini}
                 anchorEl={anchorEl}
