@@ -33,25 +33,18 @@ export const deseasesBiomedial: FieldConfig<any>[] = [
     },
     {
         label: "Origines de condiciones médicas",
-        name: "",
-        type: "divider",
+        name: "origins",
+        type: "multi-select",
         responsive: {
             xs: 12
-        }
-    },
-    ...([
-        "Congénito",
-        "Enfermedad común",
-        "Accidente de tránsito",
-        "Accidente laboral"
-    ].map(label => ({
-        label,
-        name: label,
-        type: "switch",
-        responsive: {
-            xs: 6
         },
-    }))) as any,
+        options: [
+            "Congénito",
+            "Enfermedad común",
+            "Accidente de tránsito",
+            "Accidente laboral"
+        ].map((label) => ({ label, value: label }))
+    },
     {
         label: "",
         name: "",

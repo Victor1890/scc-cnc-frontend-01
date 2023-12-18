@@ -55,6 +55,8 @@ const ModalReceptionist = <T extends object>({
                                 <FormInput<any>
                                     form={form}
                                     setForm={setForm}
+                                    errors={null}
+                                    isEditMode={true}
                                     fields={documentRequest}
                                 />
                             </Grid>

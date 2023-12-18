@@ -1,13 +1,13 @@
 import { FieldConfig } from "@components/app/modal/FormModal/FormModal.interface";
-import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
+import AttachFileIcon from '@mui/icons-material/AttachFile';
 
 export const documentRequest: FieldConfig<any>[] = [
     {
         label: "Documento de identificación (Cédula / Pasaporte / Acta de nacimiento)",
         name: "document-file",
         type: "file",
-        startAdornment: <PictureAsPdfIcon color="error" />,
-        placeholder: "Insertar documento (PDF)",
+        startAdornment: <AttachFileIcon color="primary" />,
+        placeholder: "Insertar documento (PDF o Imagen)",
         responsive: {
             xs: 12
         }
@@ -16,8 +16,8 @@ export const documentRequest: FieldConfig<any>[] = [
         label: "Ficha de Evaluación Biomédica",
         name: "biomedical-file",
         type: "file",
-        startAdornment: <PictureAsPdfIcon color="error" />,
-        placeholder: "Insertar documento (PDF)",
+        startAdornment: <AttachFileIcon color="primary" />,
+        placeholder: "Insertar documento (PDF o Imagen)",
         responsive: {
             xs: 6
         }
@@ -26,8 +26,8 @@ export const documentRequest: FieldConfig<any>[] = [
         label: "Estudios complementarios",
         name: "studios-file",
         type: "file",
-        startAdornment: <PictureAsPdfIcon color="error" />,
-        placeholder: "Insertar documento (PDF)",
+        startAdornment: <AttachFileIcon color="primary" />,
+        placeholder: "Insertar documento (PDF o Imagen)",
         responsive: {
             xs: 6
         }

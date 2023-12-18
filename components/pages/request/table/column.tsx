@@ -76,16 +76,6 @@ function ColumnRequestTable({ children, onEdit, onReport, onListForm }: IColumnR
                                 <EyeIcon sx={{ fontSize: '1.1rem' }} />
                             </IconButton>
                         </Tooltip>
-                        <Tooltip placement="top" title={"Reporte"}>
-                            <IconButton
-                                color="primary"
-                                aria-label={"Reporte" || 'Report'}
-                                size="large"
-                                onClick={() => onReport?.('view', data)}
-                            >
-                                <AssessmentIcon sx={{ fontSize: '1.1rem' }} />
-                            </IconButton>
-                        </Tooltip>
                         <Tooltip placement="top" title={"Evaluar"}>
                             <IconButton
                                 color="primary"
@@ -94,6 +84,16 @@ function ColumnRequestTable({ children, onEdit, onReport, onListForm }: IColumnR
                                 onClick={() => onListForm?.('view', data)}
                             >
                                 <FeedIcon sx={{ fontSize: '1.1rem' }} />
+                            </IconButton>
+                        </Tooltip>
+                        <Tooltip placement="top" title={"Reporte"}>
+                            <IconButton
+                                color="primary"
+                                aria-label={"Reporte" || 'Report'}
+                                size="large"
+                                onClick={() => onReport?.('view', data)}
+                            >
+                                <AssessmentIcon sx={{ fontSize: '1.1rem' }} />
                             </IconButton>
                         </Tooltip>
                     </Stack>

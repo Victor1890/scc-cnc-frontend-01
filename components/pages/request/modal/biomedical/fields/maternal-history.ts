@@ -1,34 +1,27 @@
 import { FieldConfig } from "@components/app/modal/FormModal/FormModal.interface";
 
 export const maternalHistory: FieldConfig<any>[] = [
-    ...([
-        "Rubeola",
-        "Zika",
-        "Chikungunya",
-        "Toxoplasmosis",
-        "Inf. de Vías Urinarias",
-        "Tuberculosis",
-        "Diabetes",
-        "Eclampsia/Preeclampsia",
-        "Alcohol",
-        "Cigarro",
-        "Drogas",
-        "Medicación",
-    ].map(label => ({
-        label,
-        name: label,
-        type: "switch",
-        responsive: {
-            xs: 6
-        },
-    }))) as any,
     {
-        label: "",
-        name: "",
-        type: "divider",
+        label: "Antecedentes maternal de enfermedad",
+        name: "Antecedentes maternal de enfermedad",
+        type: "multi-select",
         responsive: {
             xs: 12
-        }
+        },
+        options: [
+            "Rubeola",
+            "Zika",
+            "Chikungunya",
+            "Toxoplasmosis",
+            "Inf. de Vías Urinarias",
+            "Tuberculosis",
+            "Diabetes",
+            "Eclampsia/Preeclampsia",
+            "Alcohol",
+            "Cigarro",
+            "Drogas",
+            "Medicación",
+        ].map((label) => ({ label, value: label }))
     },
     {
         label: "En caso de ser positivo, detallar",

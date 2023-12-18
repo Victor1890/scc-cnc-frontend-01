@@ -2,14 +2,6 @@ import { FieldConfig } from "@components/app/modal/FormModal/FormModal.interface
 
 export const streetAddressRequest: FieldConfig<any>[] = [
     {
-        label: "Dirección",
-        name: "direccion",
-        type: "text",
-        responsive: {
-            xs: 12
-        }
-    },
-    {
         label: "Calle",
         name: "calle",
         type: "text",

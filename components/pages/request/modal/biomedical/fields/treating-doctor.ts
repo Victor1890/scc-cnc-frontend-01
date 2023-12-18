@@ -2,40 +2,40 @@ import { FieldConfig } from "@components/app/modal/FormModal/FormModal.interface
 
 export const treatingDoctor: FieldConfig<any>[] = [
     {
-        label: "",
-        name: "",
-        type: "divider",
+        label: "Nombre",
+        name: "treatingPhysicianInfo.firstName",
+        type: "text",
         responsive: {
-            xs: 12
+            xs: 6
         }
     },
     {
-        label: "Nombre",
-        name: "name",
+        label: "Apellido",
+        name: "treatingPhysicianInfo.lastName",
         type: "text",
         responsive: {
-            xs: 5
+            xs: 6
         }
     },
     {
         label: "Exequatur",
-        name: "exequatur",
-        type: "text",
-        responsive: {
-            xs: 3
-        }
-    },
-    {
-        label: "Especialidad",
-        name: "especialidad",
+        name: "treatingPhysicianInfo.exequatur",
         type: "text",
         responsive: {
             xs: 4
         }
     },
     {
+        label: "Especialidad",
+        name: "treatingPhysicianInfo.specialty",
+        type: "text",
+        responsive: {
+            xs: 8
+        }
+    },
+    {
         label: "PSS",
-        name: "pss",
+        name: "treatingPhysicianInfo.pss",
         type: "text",
         responsive: {
             xs: 12
@@ -43,47 +43,42 @@ export const treatingDoctor: FieldConfig<any>[] = [
     },
     {
         label: "Región de salud",
-        name: "region-salud",
-        type: "select",
+        name: "treatingPhysicianInfo.healthRegion",
+        type: "text",
         responsive: {
             xs: 4
         },
-        options: Array.from({ length: 5 }).map(() => ({ label: "TEST", value: "TEST" }))
     },
     {
         label: "Área",
-        name: "area",
-        type: "select",
+        name: "treatingPhysicianInfo.healthArea",
+        type: "text",
         responsive: {
             xs: 4
-        },
-        options: Array.from({ length: 5 }).map(() => ({ label: "TEST", value: "TEST" }))
+        }
     },
     {
         label: "Zona",
-        name: "zona",
-        type: "select",
+        name: "treatingPhysicianInfo.healthZone",
+        type: "text",
         responsive: {
             xs: 4
-        },
-        options: Array.from({ length: 5 }).map(() => ({ label: "TEST", value: "TEST" }))
+        }
     },
     {
         label: "Teléfono",
-        name: "phone",
+        name: "treatingPhysicianInfo.phoneNumber",
         type: "tel",
         responsive: {
             xs: 6
-        },
-        options: Array.from({ length: 5 }).map(() => ({ label: "TEST", value: "TEST" }))
+        }
     },
     {
         label: "Fecha del informe",
-        name: "resumeDate",
+        name: "treatingPhysicianInfo.reportDate",
         type: "date",
         responsive: {
             xs: 6
-        },
-        options: Array.from({ length: 5 }).map(() => ({ label: "TEST", value: "TEST" }))
+        }
     },
 ]

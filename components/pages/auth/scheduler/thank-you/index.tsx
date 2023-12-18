@@ -26,9 +26,6 @@ const ThankYou = () => {
 
                 <Typography variant="h3" textAlign={'center'} paddingTop={3} fontSize={16}>
                     Miércoles, Diciembre 6
-                    <Typography variant="h3" textAlign={'center'} paddingTop={1} fontSize={16}>
-                        9:00 AM - 10:00 AM
-                    </Typography>
                 </Typography>
 
                 <Typography textAlign={'center'} paddingTop={1} fontSize={16}>

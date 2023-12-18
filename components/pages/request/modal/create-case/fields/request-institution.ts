@@ -2,6 +2,30 @@ import { FieldConfig } from "@components/app/modal/FormModal/FormModal.interface
 
 export const requestInstitutionField: FieldConfig<any>[] = [
     {
+        label: "RNC",
+        name: "nrc",
+        type: 'text',
+        responsive: {
+            xs: 6
+        }
+    },
+    {
+        label: "Nombre de la institución que representa",
+        name: "institutoName",
+        type: 'text',
+        responsive: {
+            xs: 6
+        }
+    },
+    {
+        label: "",
+        name: "black",
+        type: "divider",
+        responsive: {
+            xs: 12
+        }
+    },
+    {
         label: "Documento de identidad",
         name: "documentType",
         type: 'select',
@@ -29,16 +53,16 @@ export const requestInstitutionField: FieldConfig<any>[] = [
         }
     },
     {
-        label: "RNC",
-        name: "nrc",
+        label: "Nombre",
+        name: "firstName",
         type: 'text',
         responsive: {
             xs: 6
         }
     },
     {
-        label: "Nombre de la institución que representa",
-        name: "institutoName",
+        label: "Apellidos",
+        name: "lastName",
         type: 'text',
         responsive: {
             xs: 6
@@ -50,22 +74,6 @@ export const requestInstitutionField: FieldConfig<any>[] = [
         type: 'text',
         responsive: {
             xs: 12
-        }
-    },
-    {
-        label: "Nombre",
-        name: "firstName",
-        type: 'text',
-        responsive: {
-            xs: 6
-        }
-    },
-    {
-        label: "Apellido",
-        name: "lastName",
-        type: 'text',
-        responsive: {
-            xs: 6
         }
     },
     {

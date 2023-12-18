@@ -100,6 +100,20 @@ function CreateCaseModal({
                     label: "Documentos",
                     fields: documentRequest
                 },
+                ...insertByCondition(isRepresentative || isInstitution, {
+                    label: "Razón",
+                    fields: [
+                        {
+                            label: "Razón por la cual está representando",
+                            name: "reason",
+                            placeholder: "Razón por la cual está representando",
+                            type: "textarea",
+                            responsive: {
+                                xs: 12,
+                            }
+                        }
+                    ]
+                }),
                 {
                     label: "Cita",
                     fields: CalendarSchedule()

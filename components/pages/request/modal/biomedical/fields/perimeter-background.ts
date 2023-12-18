@@ -41,24 +41,25 @@ export const perimeterBackground: FieldConfig<any>[] = [
             xs: 12
         }
     },
-    ...([
-        "Reanimación",
-        "Asfixia al nacer",
-        "Distrés Respiratorio",
-        "Sepsis neonatal",
-        "Cianosis",
-        "Llanto débil al nacer",
-        "Diabetes",
-        "Cardiopatías",
-        "Nefropatías",
-    ].map(label => ({
-        label,
-        name: label,
-        type: "switch",
+    {
+        label: "Antecedentes perinatales relevantes a la condición presente",
+        name: "Antecedentes perinatales relevantes a la condición presente",
         responsive: {
-            xs: 6
+            xs: 12
         },
-    }))) as any,
+        type: "multi-select",
+        options: [
+            "Reanimación",
+            "Asfixia al nacer",
+            "Distrés Respiratorio",
+            "Sepsis neonatal",
+            "Cianosis",
+            "Llanto débil al nacer",
+            "Diabetes",
+            "Cardiopatías",
+            "Nefropatías",
+        ].map((label) => ({ label, value: label }))
+    },
     {
         label: "",
         name: "",
