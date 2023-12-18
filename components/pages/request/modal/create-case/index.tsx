@@ -16,6 +16,7 @@ import SelectPatientType from "@components/pages/auth/scheduler/select-role";
 import { insertByCondition } from "@utils/array/array.util";
 import { useMemo } from "react";
 import CalendarSchedule from "@components/pages/auth/scheduler/calendar";
+import ExclusiveTermUse from "./fields/exclusive-use";
 
 function CreateCaseModal({
     mode,
@@ -50,7 +51,7 @@ function CreateCaseModal({
 
     return (
         <FormStepModal<any>
-            maxWith="md"
+            maxWith="lg"
             mode={mode}
             entity={{}}
             onCreate={handleSubmit}
@@ -58,6 +59,10 @@ function CreateCaseModal({
             errors={null}
             onClose={handleModalClose}
             stepFields={[
+                {
+                    label: "Uso exclusivo",
+                    fields: <ExclusiveTermUse />
+                },
                 {
                     label: "Seleccionar",
                     fields: SelectPatientType()

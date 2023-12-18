@@ -16,6 +16,7 @@ import SelectPatientType from "./select-role"
 import { useAppSelector } from "@redux/store"
 import { insertByCondition } from "@utils/array/array.util"
 import { useMemo } from "react"
+import ExclusiveTermUse from "@components/pages/request/modal/create-case/fields/exclusive-use"
 
 const SchedulePageComponent = () => {
 
@@ -47,6 +48,10 @@ const SchedulePageComponent = () => {
                             <Grid item xs={12}>
                                 <AuthScheduler
                                     stepFields={[
+                                        {
+                                            label: "Uso exclusivo",
+                                            fields: <ExclusiveTermUse />
+                                        },
                                         {
                                             label: "Seleccionar",
                                             fields: <SelectPatientType />

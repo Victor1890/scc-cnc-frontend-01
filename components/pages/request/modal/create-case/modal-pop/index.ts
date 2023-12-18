@@ -15,6 +15,7 @@ export const openCaseModalPayload = ({
 
     return {
         open: true,
+        maxWith: "lg",
         message: {
             subtitle1: {
                 message: "Solicitud creado correctamente"
