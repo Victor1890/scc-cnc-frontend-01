@@ -3,22 +3,17 @@ import {
     Button,
     Dialog,
     DialogActions,
-    DialogContent,
-    useTheme
+    DialogContent
 } from '@mui/material';
 import { closeCaseModal } from '@redux/slices/ui/modalCase';
 import { dispatch, useAppSelector } from '@redux/store';
 
 const CaseModal = () => {
     const {
-        message,
         open,
         maxWith,
         buttons,
-        logo
     } = useAppSelector(x => x.modalCase)
-
-    const theme = useTheme()
 
     const handleSubmit = () => {
         dispatch(closeCaseModal())
