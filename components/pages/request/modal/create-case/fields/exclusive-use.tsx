@@ -13,12 +13,12 @@ const ExclusiveTermUse = () => {
                                 </Typography>
                             </Grid>
                             <Grid container item>
-                                <Typography variant="body2" textAlign={'justify'}>
+                                <Typography variant="h4" fontWeight={400} textAlign={'justify'}>
                                     Certifico que las informaciones rendidas en la presente solicitud y otros documentos requeridos son verídicos y reconozco que en caso de comprobarse alguna falsedad es estrictamente mi responsabilidad, y de constatarse tal situación, se invalidará el proceso.
                                 </Typography>
                             </Grid>
                             <Grid container item>
-                                <Typography variant="body2" textAlign={'justify'}>
+                                <Typography variant="h4" fontWeight={400} textAlign={'justify'}>
                                     Por tal razón, con la firma del presente documento consiento que estrictamente en el marco del proceso de Valoración, Certificación y Registro Continuo de la Discapacidad y con ese único objetivo, puedan  corroborar, aclarar e intercambiar las informaciones rendidas y o deducidas de las evaluaciones médicas y otros documentos  sometidos a esos fines, siempre preservando la confidencialidad de dicha información por parte de los actores.
                                 </Typography>
                             </Grid>
