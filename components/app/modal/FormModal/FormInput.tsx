@@ -10,7 +10,6 @@ import {
     MenuItem,
     Select,
     SelectChangeEvent,
-    Stack,
     Table,
     TableBody,
     TableCell,
@@ -285,24 +284,37 @@ const FormInput = <T extends object>({
                                 </FormControl>
                             )}
                             {field.type === 'switch' && (
-                                <Stack direction="row" alignItems="center">
-                                    <Typography variant="h5" width={'100%'}>
-                                        {field.placeholder || field.label}
-                                    </Typography>
-                                    <UISwitch
-                                        name={String(name)}
-                                        checked={valueBoolean || form[name]}
-                                        disabled={field.disabled ? field.disabled : !isEditMode}
-                                        onChange={(e) => {
-                                            const checked = e.target.checked
-                                            const _value = checked || field.value || form[name] || false
+                                <Grid container item display={'flex'} justifyContent={'space-between'} alignItems={'center'}>
+                                    <Grid item xs={11}>
+                                        <Typography textAlign={'left'} variant="h4" fontWeight={500} width={'100%'}>
+                                            {field.placeholder || field.label}
+                                        </Typography>
+                                    </Grid>
+                                    <Grid item xs={.8}>
+                                        <UISwitch
+                                            name={String(name)}
+                                            checked={valueBoolean || form[name]}
+                                            disabled={field.disabled ? field.disabled : !isEditMode}
+                                            onChange={(e) => {
+                                                const checked = e.target.checked
+                                                const _value = checked || field.value || form[name] || false
 
-                                            typeof field.handleChange == 'function' && field.handleChange(_value)
+                                                typeof field.handleChange == 'function' && field.handleChange(_value)
 
-                                            handleSwitchChange(String(name), checked)
-                                        }}
-                                    />
-                                </Stack>
+                                                handleSwitchChange(String(name), checked)
+                                            }}
+                                        />
+                                    </Grid>
+                                    <Grid item xs={12} paddingTop={1}>
+                                        <Divider
+                                            variant='fullWidth'
+                                            sx={{
+                                                backgroundColor: theme.palette.dark.dark,
+                                                height: 1.6
+                                            }}
+                                        />
+                                    </Grid>
+                                </Grid>
                             )}
                             {field.type === 'list' && (
                                 <FormControl fullWidth>

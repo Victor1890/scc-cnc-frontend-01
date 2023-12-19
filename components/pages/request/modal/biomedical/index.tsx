@@ -24,7 +24,7 @@ const BiomedicalModal = () => {
 
     return (
         <FormStepModal<any>
-            maxWith="xl"
+            maxWith="lg"
             mode={modal.mode}
             entity={{}}
             onCreate={handleSubmit}
