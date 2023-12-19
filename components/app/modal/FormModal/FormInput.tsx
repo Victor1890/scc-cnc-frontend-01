@@ -29,7 +29,7 @@ import dayjs, { Dayjs } from 'dayjs'
 import { MuiTelInput } from 'mui-tel-input'
 import { ChangeEvent } from 'react'
 import { UISwitch } from './FormInput.style'
-import { FormInputPropsI, OptionIFieldConfigI, RightPositionI } from './FormModal.interface'
+import { FormInputPropsI, RightPositionI } from './FormModal.interface'
 
 const FormInput = <T extends object>({
     errors,
@@ -42,10 +42,11 @@ const FormInput = <T extends object>({
     const theme = useTheme()
 
     const handleInputChange = (
-        event: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement> | SelectChangeEvent
+        event: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement> | SelectChangeEvent,
+        isNumber = false
     ) => {
         const { name, value } = event.target
-        const updatedForm = { ...form, [name]: value }
+        const updatedForm = { ...form, [name]: isNumber ? +value : value }
         setForm(updatedForm)
     }
 
@@ -80,15 +81,19 @@ const FormInput = <T extends object>({
                 {fields.map((field, index) => {
                     const name = field.name as keyof T
                     const valueFile = field.value instanceof File ? (field.value as File) : null
-                    const valueOptions =
-                        field.value instanceof OptionIFieldConfigI ? (field.value as OptionIFieldConfigI[]) : null
                     const value = typeof field.value === 'string' ? (field.value as string) : null
                     const valueBoolean = typeof field.value === 'boolean' ? (field.value as boolean) : false
 
                     return (
                         <Grid item {...(field.responsive ? field.responsive : {})} key={`field-${index}`}>
                             {field.type === 'divider' && (
-                                <Divider>
+                                <Divider
+                                    variant='fullWidth'
+                                    sx={{
+                                        backgroundColor: theme.palette.dark.dark,
+                                        height: 1.6
+                                    }}
+                                >
                                     {field.label && (
                                         <Typography variant="subtitle1" color="textSecondary">
                                             {field.label}
@@ -98,8 +103,14 @@ const FormInput = <T extends object>({
                             )}
                             {field.type === 'text' || field.type === 'textarea' || field.type === 'email' || field.type === 'number' ? (
                                 <FormControl fullWidth>
-                                    <FormLabel htmlFor={`field-${field.type}-${String(name)}`} sx={{ color: '#000' }}>
-                                        {field.label}
+                                    <FormLabel
+                                        error={errors && errors[name] ? true : false}
+                                        htmlFor={`field-${field.type}-${String(name)}`}
+                                        sx={{ color: '#000' }}
+                                    >
+                                        <Typography textAlign={'left'} variant="body1" fontSize={"0.850rem"} fontWeight={500} width={'100%'}>
+                                            {field.label}
+                                        </Typography>
                                     </FormLabel>
                                     <TextField
                                         name={String(name)}
@@ -125,7 +136,7 @@ const FormInput = <T extends object>({
                                             const { value } = e.target
                                             const _value = value || value || form[name] || ''
                                             typeof field.handleChange == 'function' && field.handleChange(_value)
-                                            handleInputChange(e)
+                                            handleInputChange(e, field.type === 'number')
                                         }}
                                         {...(field.startAdornment && {
                                             InputProps: {
@@ -139,8 +150,14 @@ const FormInput = <T extends object>({
                             ) : null}
                             {field.type === 'tel' && (
                                 <FormControl fullWidth>
-                                    <FormLabel sx={{ color: '#000' }} htmlFor={`field-${field.type}-${String(name)}`}>
-                                        {field.label}
+                                    <FormLabel
+                                        error={errors && errors[name] ? true : false}
+                                        htmlFor={`field-${field.type}-${String(name)}`}
+                                        sx={{ color: '#000' }}
+                                    >
+                                        <Typography textAlign={'left'} variant="body1" fontSize={"0.850rem"} fontWeight={500} width={'100%'}>
+                                            {field.label}
+                                        </Typography>
                                     </FormLabel>
                                     <MuiTelInput
                                         defaultCountry="DO"
@@ -169,8 +186,14 @@ const FormInput = <T extends object>({
                             )}
                             {field.type === 'file' && (
                                 <FormControl fullWidth>
-                                    <FormLabel sx={{ color: '#000' }} htmlFor={`field-${field.type}-${String(name)}`}>
-                                        {field.label}
+                                    <FormLabel
+                                        error={errors && errors[name] ? true : false}
+                                        htmlFor={`field-${field.type}-${String(name)}`}
+                                        sx={{ color: '#000' }}
+                                    >
+                                        <Typography textAlign={'left'} variant="body1" fontSize={"0.850rem"} fontWeight={500} width={'100%'}>
+                                            {field.label}
+                                        </Typography>
                                     </FormLabel>
                                     <InputFile
                                         name={String(name)}
@@ -211,8 +234,14 @@ const FormInput = <T extends object>({
                             )}
                             {field.type === 'date' && (
                                 <FormControl fullWidth>
-                                    <FormLabel htmlFor={`field-${field.type}-${String(name)}`} sx={{ color: '#000' }}>
-                                        {field.label}
+                                    <FormLabel
+                                        error={errors && errors[name] ? true : false}
+                                        htmlFor={`field-${field.type}-${String(name)}`}
+                                        sx={{ color: '#000' }}
+                                    >
+                                        <Typography textAlign={'left'} variant="body1" fontSize={"0.850rem"} fontWeight={500} width={'100%'}>
+                                            {field.label}
+                                        </Typography>
                                     </FormLabel>
                                     <DatePicker
                                         value={dayjs(form[name])}
@@ -221,7 +250,7 @@ const FormInput = <T extends object>({
                                             textField: {
                                                 name: String(name),
                                                 fullWidth: true,
-                                                id: `field-${field.type}-${String(name)}`
+                                                id: `field-${field.type}-${String(name)}`,
                                             }
                                         }}
                                         onChange={(date) => {
@@ -234,13 +263,19 @@ const FormInput = <T extends object>({
                             )}
                             {field.type === 'select' && (
                                 <FormControl fullWidth>
-                                    <FormLabel htmlFor={`field-${field.type}-${String(name)}`} sx={{ color: '#000' }}>
-                                        {field.label}
+                                    <FormLabel
+                                        error={errors && errors[name] ? true : false}
+                                        htmlFor={`field-${field.type}-${String(name)}`}
+                                        sx={{ color: '#000' }}
+                                    >
+                                        <Typography textAlign={'left'} variant="body1" fontSize={"0.850rem"} fontWeight={500} width={'100%'}>
+                                            {field.label}
+                                        </Typography>
                                     </FormLabel>
                                     <Select
                                         name={String(name)}
                                         id={`field-${field.type}-${String(name)}`}
-                                        value={field?.value || form[name] || ''}
+                                        value={field?.value || form[name] || field?.options?.[0]?.value || ''}
                                         placeholder={field.placeholder}
                                         disabled={field.disabled ? field.disabled : !isEditMode}
                                         error={errors && errors[name] ? true : false}
@@ -262,13 +297,22 @@ const FormInput = <T extends object>({
                             )}
                             {field.type === 'multi-select' && (
                                 <FormControl fullWidth>
-                                    <FormLabel htmlFor={`field-${field.type}-${String(name)}`}>{field.label}</FormLabel>
+                                    <FormLabel
+                                        error={errors && errors[name] ? true : false}
+                                        htmlFor={`field-${field.type}-${String(name)}`}
+                                        sx={{ color: '#000' }}
+                                    >
+                                        <Typography textAlign={'left'} variant="body1" fontSize={"0.850rem"} fontWeight={500} width={'100%'}>
+                                            {field.label}
+                                        </Typography>
+                                    </FormLabel>
                                     <Autocomplete
                                         id={`field-${field.type}-${String(name)}`}
                                         multiple
+                                        placeholder={field.placeholder}
                                         options={field.options || []}
                                         getOptionLabel={(option) => option.label}
-                                        value={valueOptions || form[name]}
+                                        value={(field.options || []).filter(option => ((field.value || form[name] || []) as string[]).includes(option.value))}
                                         disableCloseOnSelect
                                         disabled={field.disabled ? field.disabled : !isEditMode}
                                         onChange={(_, values) => {
@@ -277,7 +321,12 @@ const FormInput = <T extends object>({
                                             handleMultiSelectChange(String(name), data)
                                         }}
                                         renderInput={(params) => (
-                                            <TextField {...params} variant="outlined" placeholder={field.placeholder} />
+                                            <TextField
+                                                {...params}
+                                                error={errors && errors[name] ? true : false}
+                                                variant="outlined"
+                                                placeholder={field.placeholder}
+                                            />
                                         )}
                                     />
                                     {errors && errors[name] && <FormHelperText error>{errors[name]}</FormHelperText>}
@@ -286,13 +335,20 @@ const FormInput = <T extends object>({
                             {field.type === 'switch' && (
                                 <Grid container item display={'flex'} justifyContent={'space-between'} alignItems={'center'}>
                                     <Grid item xs={11}>
-                                        <Typography textAlign={'left'} variant="h4" fontWeight={500} width={'100%'}>
-                                            {field.placeholder || field.label}
-                                        </Typography>
+                                        <FormLabel
+                                            error={errors && errors[name] ? true : false}
+                                            htmlFor={`field-${field.type}-${String(name)}`}
+                                            sx={{ color: '#000' }}
+                                        >
+                                            <Typography textAlign={'left'} variant="body1" fontSize={"0.850rem"} fontWeight={500} width={'100%'}>
+                                                {field.placeholder || field.label}
+                                            </Typography>
+                                        </FormLabel>
                                     </Grid>
                                     <Grid item xs={.8}>
                                         <UISwitch
                                             name={String(name)}
+                                            id={`field-${field.type}-${String(name)}`}
                                             checked={valueBoolean || form[name]}
                                             disabled={field.disabled ? field.disabled : !isEditMode}
                                             onChange={(e) => {
@@ -305,7 +361,7 @@ const FormInput = <T extends object>({
                                             }}
                                         />
                                     </Grid>
-                                    <Grid item xs={12} paddingTop={1}>
+                                    <Grid item xs={12} paddingTop={.5}>
                                         <Divider
                                             variant='fullWidth'
                                             sx={{
