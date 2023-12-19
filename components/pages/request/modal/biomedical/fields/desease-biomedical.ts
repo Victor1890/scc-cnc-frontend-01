@@ -6,7 +6,7 @@ export const deseasesBiomedial: FieldConfig<any>[] = [
         name: "code",
         type: "select",
         responsive: {
-            xs: 12
+            xs: 6
         },
         options: [
             "A00-A09: Enfermedades intestinales infecciosas",
@@ -36,7 +36,7 @@ export const deseasesBiomedial: FieldConfig<any>[] = [
         name: "origins",
         type: "multi-select",
         responsive: {
-            xs: 12
+            xs: 6
         },
         options: [
             "Congénito",
@@ -47,19 +47,28 @@ export const deseasesBiomedial: FieldConfig<any>[] = [
     },
     {
         label: "",
-        name: "",
+        name: "divider",
         type: "divider",
         responsive: {
             xs: 12
         }
     },
     {
-        label: "Antecedentes familiares relevantes a la condición presente",
-        placeholder: "Antecedentes familiares relevantes a la condición presente",
-        name: "familiar",
+        label: "Descripción del diagnóstico",
+        placeholder: "Descripción del diagnóstico",
+        name: "descriptionDiagnose",
         type: "textarea",
         responsive: {
-            xs: 12
+            xs: 6
+        },
+    },
+    {
+        label: "Antecedentes familiares relevantes a la condición presente",
+        placeholder: "Antecedentes familiares relevantes a la condición presente",
+        name: "relevantFamilyHistory",
+        type: "textarea",
+        responsive: {
+            xs: 6
         },
     }
 ]

@@ -3,15 +3,15 @@ import { FieldConfig } from "@components/app/modal/FormModal/FormModal.interface
 export const perimeterBackground: FieldConfig<any>[] = [
     {
         label: "Edad gestacional",
-        name: "Edad gestacional",
-        type: "text",
+        name: "ageGestional",
+        type: "number",
         responsive: {
             xs: 3
         },
     },
     {
         label: "Apgar",
-        name: "Apgar",
+        name: "apgar",
         type: "text",
         responsive: {
             xs: 3
@@ -19,34 +19,41 @@ export const perimeterBackground: FieldConfig<any>[] = [
     },
     {
         label: "Peso al nacer",
-        name: "Peso al nacer",
-        type: "text",
+        name: "birthWeightPoundsLb",
+        type: "number",
         responsive: {
             xs: 3
         },
     },
     {
         label: "Perímetro cefálico",
-        name: "Perímetro cefálico",
-        type: "text",
+        name: "headCircumferenceCm",
+        type: "number",
         responsive: {
             xs: 3
         },
     },
     {
-        label: "",
-        name: "",
-        type: "divider",
+        label: "Reanimación",
+        name: "revival",
+        type: "select",
+        options: [
+            {
+                label: "Si",
+                value: "Si"
+            },
+            {
+                label: "No",
+                value: "No"
+            }
+        ],
         responsive: {
-            xs: 12
-        }
+            xs: 3
+        },
     },
     {
-        label: "Antecedentes perinatales relevantes a la condición presente",
-        name: "Antecedentes perinatales relevantes a la condición presente",
-        responsive: {
-            xs: 12
-        },
+        label: "Antecedentes perinatales de enfermedad",
+        name: "perinatalDiseaseHistoryUUIDs",
         type: "multi-select",
         options: [
             "Reanimación",
@@ -58,23 +65,18 @@ export const perimeterBackground: FieldConfig<any>[] = [
             "Diabetes",
             "Cardiopatías",
             "Nefropatías",
-        ].map((label) => ({ label, value: label }))
-    },
-    {
-        label: "",
-        name: "",
-        type: "divider",
+        ].map((label) => ({ label, value: label })),
         responsive: {
-            xs: 12
+            xs: 9
         }
     },
     {
         label: "En caso de ser positivo, detallar",
-        name: "test - 1",
+        name: "reasonPerinatal",
         placeholder: "En caso de ser positivo, detallar",
         type: "textarea",
         responsive: {
             xs: 12
         }
-    },
+    }
 ]

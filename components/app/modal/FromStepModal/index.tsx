@@ -109,6 +109,7 @@ const FormStepModal = <T extends object>({
 					<Stepper
 						activeStep={activeStep}
 						orientation='horizontal'
+						alternativeLabel
 						sx={{ paddingBottom: 2, flex: 1, justifyContent: "center" }}
 					>
 						{stepFields.map((stepField, index) => (
