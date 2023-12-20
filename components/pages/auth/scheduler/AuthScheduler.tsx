@@ -76,7 +76,11 @@ const AuthScheduler = <T extends object>({
 
     return (
         <form noValidate>
-            <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }} alternativeLabel>
+            <Stepper
+                activeStep={activeStep}
+                sx={{ pt: 3, pb: 5 }}
+                alternativeLabel
+            >
                 {stepFields.map(({ label }, index) => {
                     const labelProps: { error?: boolean; optional?: React.ReactNode } = {};
 
@@ -134,7 +138,7 @@ const AuthScheduler = <T extends object>({
                             )}
                             <AnimateButton>
                                 <Button variant="contained" onClick={handleNext} sx={{ my: 3, ml: 1 }}>
-                                    {activeStep === stepFields.length - 1 ? 'Agendar' : 'Siguiente'}
+                                    {(activeStep === stepFields.length - 1) ? 'Agendar' : (activeStep === 0) ? 'Acepto' : 'Siguiente'}
                                 </Button>
                             </AnimateButton>
                         </Stack>
