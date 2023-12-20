@@ -61,7 +61,6 @@ const SelectPatientType = () => {
                                     }}
                                 >
                                     <EscalatorWarningRoundedIcon width={100} height={100} sx={{ fontSize: 100 }} />
-                                    <Typography textAlign={'center'} variant="h2" color={active.isRepresentative ? '#fff' : "#000"}>Representante</Typography>
                                     <Typography textAlign={'center'} variant="h2" color={active.isRepresentative ? '#fff' : "#000"}>Tutor Legal</Typography>
                                 </Button>
                             </Grid>
