@@ -508,7 +508,7 @@ const RequestProfile = () => {
                                         <Grid item container spacing={2} paddingTop={1} display={'flex'} justifyContent={'flex-end'}>
                                             <Grid item>
                                                 <Button variant='contained'>
-                                                    Reevaluar
+                                                    Enviar
                                                 </Button>
                                             </Grid>
                                         </Grid>
