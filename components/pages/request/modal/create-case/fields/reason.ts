@@ -29,7 +29,6 @@ export const motiveRequest: FieldConfig<any>[] = [
         options: [
             "Lenguaje hablado",
             "Lector o escritura",
-            "Lector o escritura",
             "Lengua de Señas",
             "Braille",
             "Audio"

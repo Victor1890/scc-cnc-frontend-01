@@ -363,10 +363,10 @@ const FormInput = <T extends object>({
                                     <Grid item xs={12} paddingTop={.5}>
                                         <Divider
                                             variant='fullWidth'
-                                            sx={{
-                                                backgroundColor: theme.palette.dark.dark,
-                                                height: 1.6
-                                            }}
+                                        // sx={{
+                                        //     backgroundColor: theme.palette.dark.dark,
+                                        //     height: 1.6
+                                        // }}
                                         />
                                     </Grid>
                                 </Grid>

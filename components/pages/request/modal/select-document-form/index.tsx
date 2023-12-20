@@ -73,7 +73,7 @@ const SelectDocumentForm = ({ onClose, onBack, open }: EntitySelectDocumentFormM
                 >
                 </Grid>
                 <Grid container paddingTop={1} width={'100%'}>
-                    <ButtonDocumentFormItem title="Ficha de información biomédical" onClick={handleClickBiomedical} />
+                    <ButtonDocumentFormItem title="Ficha de información biomédica" onClick={handleClickBiomedical} />
                     <ButtonDocumentFormItem title="Contextual" onClick={handleClickContextual} />
                     <ButtonDocumentFormItem title="Whodas Bebé" onClick={() => handleClickWhodas("Whodas Bebé")} />
                     <ButtonDocumentFormItem title="Whodas Niños" onClick={() => handleClickWhodas("Whodas Niños")} />
