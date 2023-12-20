@@ -19,12 +19,14 @@ import {
     FormLabel,
     Button,
     Select,
-    MenuItem
+    MenuItem,
+    useMediaQuery
 } from '@mui/material'
 import GetAppIcon from '@mui/icons-material/GetApp';
 
 const RequestProfile = () => {
     const theme = useTheme()
+    const matchDownSM = useMediaQuery(theme.breakpoints.down('md'));
 
     const onDownload = () => {
         const link = document.createElement("a");
@@ -38,19 +40,50 @@ const RequestProfile = () => {
             <Grid item lg={4} xs={12}>
                 <SubCard
                     title={
-                        <Grid container spacing={2} justifyContent={'center'} alignItems={'center'}>
-                            <Grid item >
+                        <Grid container spacing={2}>
+                            <Grid
+                                item
+                                container
+                                xs={matchDownSM ? 12 : 2}
+                                sx={{
+                                    ...(matchDownSM && {
+                                        display: 'flex',
+                                        justifyContent: 'center',
+                                        alignItems: 'center'
+                                    })
+                                }}
+                            >
                                 <Avatar
                                     alt="User 1"
                                     src={'/assets/images/users/empty-profile.png'}
                                     sx={{ width: 56, height: 56 }}
                                 />
                             </Grid>
-                            <Grid item container sx={{ width: "75%" }}>
-                                <Grid item>
+                            <Grid item container xs={matchDownSM ? 12 : 10}>
+                                <Grid
+                                    item
+                                    xs={12}
+                                    sx={{
+                                        ...(matchDownSM && {
+                                            display: 'flex',
+                                            justifyContent: 'center',
+                                            alignItems: 'center'
+                                        })
+                                    }}
+                                >
                                     <Typography variant='h2'>John Wick</Typography>
                                 </Grid>
-                                <Grid item paddingTop={1}>
+                                <Grid
+                                    item
+                                    xs={12}
+                                    sx={{
+                                        ...(matchDownSM && {
+                                            display: 'flex',
+                                            justifyContent: 'center',
+                                            alignItems: 'center'
+                                        })
+                                    }}
+                                >
                                     <Typography variant='inherit'>john-wick@example.com</Typography>
                                 </Grid>
                             </Grid>
