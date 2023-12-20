@@ -17,7 +17,9 @@ import {
     FormControl,
     Stack,
     FormLabel,
-    Button
+    Button,
+    Select,
+    MenuItem
 } from '@mui/material'
 import GetAppIcon from '@mui/icons-material/GetApp';
 
@@ -403,6 +405,81 @@ const RequestProfile = () => {
                                                 Generar Carta de negación
                                             </Button>
                                         </Grid>
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                        </SubCard>
+                    </Grid>
+
+                    <Grid item xs={12}>
+                        <SubCard>
+                            <Grid container spacing={2}>
+                                <Grid item xs={12}>
+                                    <Typography variant="subtitle1">Reevaluar solicitud</Typography>
+                                </Grid>
+                                <Grid item container spacing={1} xs={12}>
+                                    <Grid item container spacing={1} xs={12}>
+
+                                        <Grid item xs={12} paddingTop={2}>
+                                            <FormControl fullWidth>
+                                                <FormLabel
+                                                    htmlFor={`field-select`}
+                                                    sx={{ color: '#000' }}
+                                                >
+                                                    <Typography textAlign={'left'} variant="body1" width={'100%'}>
+                                                        Motivo de la solicitud de reconsideración
+                                                    </Typography>
+                                                </FormLabel>
+                                                <Select
+                                                    name={String(name)}
+                                                    id={`field-select`}
+                                                    placeholder={"Motivo de la solicitud de reconsideración"}
+                                                >
+                                                    {
+                                                        [
+                                                            "Disconformidad con la notificación de denegación",
+                                                            "Disconformidad con el contenido del certificado - Origen de la discapacidad",
+                                                            "Disconformidad con el contenido del certificado - Existencia de la discapacidad",
+
+                                                        ].map((label, index) => (
+                                                            <MenuItem key={index} value={label}>
+                                                                {label}
+                                                            </MenuItem>
+                                                        ))
+                                                    }
+                                                </Select>
+                                            </FormControl>
+                                        </Grid>
+
+                                        <Grid item xs={12}>
+                                            <FormControl fullWidth>
+                                                <FormLabel sx={{ color: "#000" }} htmlFor={`field-janality-input`}>
+                                                    <Typography textAlign={'left'} variant="body1" width={'100%'}>
+                                                        Justificar el motivo de la reevaluación:
+                                                    </Typography>
+                                                </FormLabel>
+                                                <TextField
+                                                    id='field-janality-input'
+                                                    type='textarea'
+                                                    placeholder='Justificar el motivo'
+                                                    multiline
+                                                    inputProps={{
+                                                        style: {
+                                                            height: "50px",
+                                                        },
+                                                    }}
+                                                />
+                                            </FormControl>
+                                        </Grid>
+
+                                        <Grid item container spacing={2} paddingTop={1} display={'flex'} justifyContent={'flex-end'}>
+                                            <Grid item>
+                                                <Button variant='contained'>
+                                                    Reevaluar
+                                                </Button>
+                                            </Grid>
+                                        </Grid>
+
                                     </Grid>
                                 </Grid>
                             </Grid>
