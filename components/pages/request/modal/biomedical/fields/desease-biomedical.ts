@@ -46,14 +46,6 @@ export const deseasesBiomedial: FieldConfig<any>[] = [
         ].map((label) => ({ label, value: label }))
     },
     {
-        label: "",
-        name: "divider",
-        type: "divider",
-        responsive: {
-            xs: 12
-        }
-    },
-    {
         label: "Descripción del diagnóstico",
         placeholder: "Descripción del diagnóstico",
         name: "descriptionDiagnose",

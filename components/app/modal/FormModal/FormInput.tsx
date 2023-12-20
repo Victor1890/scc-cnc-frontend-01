@@ -89,10 +89,10 @@ const FormInput = <T extends object>({
                             {field.type === 'divider' && (
                                 <Divider
                                     variant='fullWidth'
-                                    sx={{
-                                        backgroundColor: theme.palette.dark.dark,
-                                        height: 1.6
-                                    }}
+                                // sx={{
+                                //     backgroundColor: theme.palette.dark.dark,
+                                //     height: 1.6
+                                // }}
                                 >
                                     {field.label && (
                                         <Typography variant="subtitle1" color="textSecondary">
@@ -275,7 +275,7 @@ const FormInput = <T extends object>({
                                     <Select
                                         name={String(name)}
                                         id={`field-${field.type}-${String(name)}`}
-                                        value={field?.value || form[name] || field?.options?.[0]?.value || ''}
+                                        value={field?.value || form[name] || ''}
                                         placeholder={field.placeholder}
                                         disabled={field.disabled ? field.disabled : !isEditMode}
                                         error={errors && errors[name] ? true : false}
