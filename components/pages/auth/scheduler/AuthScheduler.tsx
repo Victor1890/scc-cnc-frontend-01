@@ -76,7 +76,7 @@ const AuthScheduler = <T extends object>({
 
     return (
         <form noValidate>
-            <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }}>
+            <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }} alternativeLabel>
                 {stepFields.map(({ label }, index) => {
                     const labelProps: { error?: boolean; optional?: React.ReactNode } = {};
 
