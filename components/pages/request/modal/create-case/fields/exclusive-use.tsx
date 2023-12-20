@@ -24,7 +24,7 @@ const ExclusiveTermUse = () => {
                             </Grid>
                             <Grid container item>
                                 <Typography variant="h4" fontWeight={400} textAlign={'justify'}>
-                                    Por tal razón, al presente documento, consiento que estrictamente, en el marco del proceso de Valoración, Certificación y Registro Continuo de la Discapacidad y con ese único objetivo, puedan corroborar, aclarar e intercambiar las informaciones rendidas y o deducidas de las evaluaciones médicas y otros documentos sometidos a esos fines, siempre preservando la confidencialidad de dicha información por parte de los actores.
+                                    Por tal razón, al aceptar el presente documento, consiento que, en el marco del proceso de Valoración, Certificación y Registro Continuo de la Discapacidad y con ese único objetivo, puedan corroborar, aclarar e intercambiar las informaciones rendidas y/o deducidas de las evaluaciones médicas y otros documentos sometidos a esos fines, siempre preservando la confidencialidad de dicha información por parte de los actores.
                                 </Typography>
                             </Grid>
                         </Grid>
