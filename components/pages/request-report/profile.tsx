@@ -18,11 +18,10 @@ import {
     Stack,
     FormLabel,
     Button,
-    Select,
-    MenuItem,
     useMediaQuery
 } from '@mui/material'
 import GetAppIcon from '@mui/icons-material/GetApp';
+import { ONE_REQUEST } from '../../../dummy/request.data';
 
 const RequestProfile = () => {
     const theme = useTheme()
@@ -40,11 +39,11 @@ const RequestProfile = () => {
             <Grid item lg={4} xs={12}>
                 <SubCard
                     title={
-                        <Grid container spacing={2}>
+                        <Grid container spacing={2} display={'flex'} justifyContent={'center'} alignItems={'center'}>
                             <Grid
                                 item
                                 container
-                                xs={matchDownSM ? 12 : 2}
+                                xs={matchDownSM ? 12 : 3}
                                 sx={{
                                     ...(matchDownSM && {
                                         display: 'flex',
@@ -59,7 +58,7 @@ const RequestProfile = () => {
                                     sx={{ width: 56, height: 56 }}
                                 />
                             </Grid>
-                            <Grid item container xs={matchDownSM ? 12 : 10}>
+                            <Grid item container xs={matchDownSM ? 12 : 8}>
                                 <Grid
                                     item
                                     xs={12}
@@ -71,7 +70,7 @@ const RequestProfile = () => {
                                         })
                                     }}
                                 >
-                                    <Typography variant='h2'>John Wick</Typography>
+                                    <Typography variant='h2'>{ONE_REQUEST.fullName}</Typography>
                                 </Grid>
                                 <Grid
                                     item
@@ -84,7 +83,7 @@ const RequestProfile = () => {
                                         })
                                     }}
                                 >
-                                    <Typography variant='inherit'>john-wick@example.com</Typography>
+                                    <Typography variant='inherit'>{ONE_REQUEST.email}</Typography>
                                 </Grid>
                             </Grid>
                         </Grid>
@@ -95,23 +94,23 @@ const RequestProfile = () => {
                             <TableBody>
                                 <TableRow>
                                     <TableCell variant="head">Cédula</TableCell>
-                                    <TableCell>001-0057793-3</TableCell>
+                                    <TableCell>{ONE_REQUEST.identification}</TableCell>
                                 </TableRow>
                                 <TableRow>
                                     <TableCell variant="head">Teléfono</TableCell>
-                                    <TableCell>+1 849-555-8888</TableCell>
+                                    <TableCell>{ONE_REQUEST.phone}</TableCell>
                                 </TableRow>
                                 <TableRow>
                                     <TableCell variant="head">Celular</TableCell>
-                                    <TableCell>+1 849-666-8888</TableCell>
+                                    <TableCell>{ONE_REQUEST.mobile}</TableCell>
                                 </TableRow>
                                 <TableRow>
                                     <TableCell variant="head">Edad</TableCell>
-                                    <TableCell>37 años</TableCell>
+                                    <TableCell>{ONE_REQUEST.age} años</TableCell>
                                 </TableRow>
                                 <TableRow>
                                     <TableCell variant="head">Sexo</TableCell>
-                                    <TableCell>Masculino</TableCell>
+                                    <TableCell>{ONE_REQUEST.gender}</TableCell>
                                 </TableRow>
                             </TableBody>
                         </Table>
@@ -438,81 +437,6 @@ const RequestProfile = () => {
                                                 Generar Carta de negación
                                             </Button>
                                         </Grid>
-                                    </Grid>
-                                </Grid>
-                            </Grid>
-                        </SubCard>
-                    </Grid>
-
-                    <Grid item xs={12}>
-                        <SubCard>
-                            <Grid container spacing={2}>
-                                <Grid item xs={12}>
-                                    <Typography variant="subtitle1">Reevaluar solicitud</Typography>
-                                </Grid>
-                                <Grid item container spacing={1} xs={12}>
-                                    <Grid item container spacing={1} xs={12}>
-
-                                        <Grid item xs={12} paddingTop={2}>
-                                            <FormControl fullWidth>
-                                                <FormLabel
-                                                    htmlFor={`field-select`}
-                                                    sx={{ color: '#000' }}
-                                                >
-                                                    <Typography textAlign={'left'} variant="body1" width={'100%'}>
-                                                        Motivo de la solicitud de reconsideración
-                                                    </Typography>
-                                                </FormLabel>
-                                                <Select
-                                                    name={String(name)}
-                                                    id={`field-select`}
-                                                    placeholder={"Motivo de la solicitud de reconsideración"}
-                                                >
-                                                    {
-                                                        [
-                                                            "Disconformidad con la notificación de denegación",
-                                                            "Disconformidad con el contenido del certificado - Origen de la discapacidad",
-                                                            "Disconformidad con el contenido del certificado - Existencia de la discapacidad",
-
-                                                        ].map((label, index) => (
-                                                            <MenuItem key={index} value={label}>
-                                                                {label}
-                                                            </MenuItem>
-                                                        ))
-                                                    }
-                                                </Select>
-                                            </FormControl>
-                                        </Grid>
-
-                                        <Grid item xs={12}>
-                                            <FormControl fullWidth>
-                                                <FormLabel sx={{ color: "#000" }} htmlFor={`field-janality-input`}>
-                                                    <Typography textAlign={'left'} variant="body1" width={'100%'}>
-                                                        Justificar el motivo de la reevaluación:
-                                                    </Typography>
-                                                </FormLabel>
-                                                <TextField
-                                                    id='field-janality-input'
-                                                    type='textarea'
-                                                    placeholder='Justificar el motivo'
-                                                    multiline
-                                                    inputProps={{
-                                                        style: {
-                                                            height: "50px",
-                                                        },
-                                                    }}
-                                                />
-                                            </FormControl>
-                                        </Grid>
-
-                                        <Grid item container spacing={2} paddingTop={1} display={'flex'} justifyContent={'flex-end'}>
-                                            <Grid item>
-                                                <Button variant='contained'>
-                                                    Enviar
-                                                </Button>
-                                            </Grid>
-                                        </Grid>
-
                                     </Grid>
                                 </Grid>
                             </Grid>

@@ -77,7 +77,8 @@ function Table<T>({ columns, withHover = true, data, pagination, errorMessage }:
                                         <column.RenderColumn />
                                     ) : (
                                         <Typography
-                                            variant="body1"
+                                            variant="subtitle1"
+                                            fontWeight={700}
                                             style={{ whiteSpace: "nowrap" }}
                                         >
                                             {column.title}

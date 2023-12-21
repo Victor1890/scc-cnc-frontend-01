@@ -22,15 +22,15 @@ function ColumnRequestTable({ children, onEdit, onReport, onListForm, onReevalua
         {
             title: "Nombre completo",
             css: { paddingLeft: "2rem" },
-            render: () => (
-                <span>John Wick</span>
+            render: ({ data }) => (
+                <span>{data.fullName}</span>
             )
         },
         {
             title: "Estados",
-            render: () => (
+            render: ({ data }) => (
                 <Chip
-                    label={"Created"}
+                    label={data.status}
                     size="small"
                     sx={{
                         background: theme.palette.mode === 'dark' ? theme.palette.dark.main : theme.palette.success.light + 60,
@@ -41,15 +41,18 @@ function ColumnRequestTable({ children, onEdit, onReport, onListForm, onReevalua
         },
         {
             title: "Fecha",
-            render: () => (
-                <span>{new Date().toLocaleDateString()}</span>
+            render: ({ data }) => (
+                <span>{new Date(data.date).toLocaleDateString()}</span>
             )
         },
         {
             title: "Número de caso",
-            render: () => (
-                <span>123456</span>
-            )
+            render: ({ data }) => {
+                console.log('data', data)
+                return (
+                    <span>{data.caseNumber}</span>
+                )
+            }
         },
         {
             title: "Acciones",

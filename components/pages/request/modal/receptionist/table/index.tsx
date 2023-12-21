@@ -7,6 +7,7 @@ import {
     Paper,
     Typography
 } from '@mui/material'
+import { ONE_REQUEST } from '../../../../../../dummy/request.data'
 
 const ReceptionistTable = () => {
 
@@ -19,7 +20,7 @@ const ReceptionistTable = () => {
                             <Typography>Caso #:</Typography>
                         </TableCell>
                         <TableCell>
-                            <Typography>0131616516</Typography>
+                            <Typography>{ONE_REQUEST.caseNumber}</Typography>
                         </TableCell>
                     </TableRow>
                     <TableRow hover>
@@ -27,7 +28,7 @@ const ReceptionistTable = () => {
                             <Typography>Cédula: </Typography>
                         </TableCell>
                         <TableCell>
-                            <Typography>001-0057793-3</Typography>
+                            <Typography>{ONE_REQUEST.identification}</Typography>
                         </TableCell>
                     </TableRow>
                     <TableRow hover>
@@ -35,7 +36,7 @@ const ReceptionistTable = () => {
                             <Typography>Edad:</Typography>
                         </TableCell>
                         <TableCell>
-                            <Typography>37 años</Typography>
+                            <Typography>{ONE_REQUEST.age} años</Typography>
                         </TableCell>
                     </TableRow>
                     <TableRow hover>
@@ -43,7 +44,7 @@ const ReceptionistTable = () => {
                             <Typography>Sexo:</Typography>
                         </TableCell>
                         <TableCell>
-                            <Typography>Masculino</Typography>
+                            <Typography>{ONE_REQUEST.gender}</Typography>
                         </TableCell>
                     </TableRow>
                     <TableRow hover>
@@ -51,7 +52,7 @@ const ReceptionistTable = () => {
                             <Typography>Fecha de nacimiento:</Typography>
                         </TableCell>
                         <TableCell>
-                            <Typography>11/11/1999</Typography>
+                            <Typography>{ONE_REQUEST.date}</Typography>
                         </TableCell>
                     </TableRow>
                 </TableBody>

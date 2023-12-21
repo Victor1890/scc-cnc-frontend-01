@@ -6,6 +6,7 @@ import SelectDocumentForm from "../modal/select-document-form";
 import { useRouter } from 'next/router'
 import { generateUUID } from "@utils/strings/strings.util";
 import { IRequestTableProps } from "./table.interface";
+import { REQUESTS } from "../../../../dummy/request.data";
 
 
 function RequestTable({ onReevaluate }: IRequestTableProps) {
@@ -33,7 +34,7 @@ function RequestTable({ onReevaluate }: IRequestTableProps) {
                     <Table
                         columns={columns}
                         withHover={false}
-                        data={Array.from({ length: 10 })}
+                        data={REQUESTS}
                         pagination={{
                             handleChange: setPage,
                             maxRowsPerPage: 10,
