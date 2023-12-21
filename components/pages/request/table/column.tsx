@@ -47,12 +47,9 @@ function ColumnRequestTable({ children, onEdit, onReport, onListForm, onReevalua
         },
         {
             title: "Número de caso",
-            render: ({ data }) => {
-                console.log('data', data)
-                return (
-                    <span>{data.caseNumber}</span>
-                )
-            }
+            render: ({ data }) => (
+                <span>{data.caseNumber}</span>
+            )
         },
         {
             title: "Acciones",
