@@ -23,7 +23,7 @@ import Transitions from '@components/app/extended/Transitions';
 import MainCard from '@components/app/cards/MainCard';
 import { profileMenuItems } from './profile-items.settings';
 
-const User1 = '/assets/images/users/empty-profile.png';
+const User1 = '/assets/images/users/User-Pic.svg';
 
 const ProfileSection = () => {
   const theme = useTheme();
@@ -145,7 +145,7 @@ const ProfileSection = () => {
                       </Stack>
                       <Divider />
                     </Box>
-                    <PerfectScrollbar style={{ height: '100%', maxHeight: 'calc(100vh - 250px)', overflowX: 'hidden' }}>
+                    <PerfectScrollbar style={{ height: '100%', maxHeight: 'calc(100vh - 300px)', overflowX: 'hidden' }}>
                       <Box sx={{ p: 2, pt: 0 }}>
                         <List
                           component="nav"
