@@ -8,7 +8,6 @@ import {
 	Grid
 } from '@mui/material';
 import { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import FormInput from './FormInput';
 import { Entity, EntityModalPropsI } from './FormModal.interface';
 
@@ -25,10 +24,8 @@ const FormModal = <T extends object>({
 	entityName,
 	rightPosition,
 	maxWith = 'xs',
-	button
 }: EntityModalPropsI<T>) => {
 
-	const { t: tLayout } = useTranslation('layout')
 	const [form, setForm] = useState<Entity<T>>({} as Entity<T>)
 	const [isEditMode, setIsEditMode] = useState(false)
 
@@ -64,7 +61,7 @@ const FormModal = <T extends object>({
 	return (
 		<Dialog open={open} onClose={onClose} maxWidth={maxWith} fullWidth PaperProps={{ sx: { borderRadius: 4 } }}>
 			<DialogTitle>
-				{mode === 'create' ? `${tLayout("create")} ${entityName}` : mode === 'edit' ? `${tLayout('edit')} ${entityName}` : `${tLayout("view")} ${entityName}`}
+				{entityName}
 			</DialogTitle>
 			<DialogContent>
 				<Grid container>
@@ -92,11 +89,11 @@ const FormModal = <T extends object>({
 			</DialogContent>
 			<DialogActions sx={{ paddingRight: "34px" }}>
 				<Button onClick={handleClose} variant='outlined' sx={{ borderRadius: 50, width: "15%" }} size='large'>
-					{button?.closeText || tLayout("close")}
+					Cancelar
 				</Button>
 				{isEditMode && (
 					<Button onClick={handleSubmit} variant="contained" sx={{ borderRadius: 50, width: "15%" }}>
-						{mode === 'create' ? (button?.newText || tLayout("create")) : (button?.saveText || tLayout("save"))}
+						{mode === 'create' ? "Enviar" : "Guardar"}
 					</Button>
 				)}
 			</DialogActions>

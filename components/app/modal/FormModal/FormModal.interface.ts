@@ -91,9 +91,4 @@ export interface EntityModalPropsI<T> extends ExcludeProperties<FormInputPropsI<
 	content?: React.ReactNode
 	rightPosition?: RightPositionI
 	maxWith?: MaxWithType
-	button?: {
-		newText?: string
-		closeText?: string
-		saveText?: string
-	}
 }

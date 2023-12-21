@@ -10,10 +10,11 @@ import {
 } from '@mui/material';
 import AssessmentIcon from '@mui/icons-material/Assessment';
 import EyeIcon from '@mui/icons-material/RemoveRedEye'
+import CachedRoundedIcon from '@mui/icons-material/CachedRounded';
 // import EditIcon from '@mui/icons-material/Edit';
 import FeedIcon from '@mui/icons-material/Feed';
 
-function ColumnRequestTable({ children, onEdit, onReport, onListForm }: IColumnRequestTableProps) {
+function ColumnRequestTable({ children, onEdit, onReport, onListForm, onReevaluate }: IColumnRequestTableProps) {
 
     const theme = useTheme();
 
@@ -94,6 +95,16 @@ function ColumnRequestTable({ children, onEdit, onReport, onListForm }: IColumnR
                                 onClick={() => onReport?.('view', data)}
                             >
                                 <AssessmentIcon sx={{ fontSize: '1.1rem' }} />
+                            </IconButton>
+                        </Tooltip>
+                        <Tooltip placement="top" title={"Reconsideración"}>
+                            <IconButton
+                                color="primary"
+                                aria-label={"Reconsideración" || 'Report'}
+                                size="large"
+                                onClick={() => onReevaluate?.('view', data)}
+                            >
+                                <CachedRoundedIcon sx={{ fontSize: '1.1rem' }} />
                             </IconButton>
                         </Tooltip>
                     </Stack>

@@ -17,11 +17,14 @@ import RequestTable from "./table";
 import CustomDateRangePicker from "@components/app/date-range-picker";
 import ContextualModal from "./modal/contextual";
 import WhodaForm from "./modal/whoda";
+import ReevaluateModal from "./modal/re-evaluate";
 
 const RequestComponentPage = () => {
 
     const [modalMode, setModalMode] = useState<ModalModeType>('create')
     const [openModal, setOpenModal] = useState(false)
+    const [openReevaluateModal, setOpenReevaluateModal] = useState(false)
+    const [modalReevaluateMode, setModalReevaluateMode] = useState<ModalModeType>('create')
     // const [openModalReceptionist, setOpenModalReceptionist] = useState(false)
     // const [openDocumentFormModal, setOpenDocumentFormModal] = useState(false)
     // const [openSelectDocumentFormModal, setOpenSelectDocumentFormModal] = useState(false)
@@ -31,6 +34,11 @@ const RequestComponentPage = () => {
     const handleOpenCreateModal = () => {
         setModalMode('create')
         setOpenModal(true)
+    }
+
+    const handleOpenReevaluateModal = () => {
+        setModalReevaluateMode('create')
+        setOpenReevaluateModal(true)
     }
 
     return (
@@ -80,7 +88,9 @@ const RequestComponentPage = () => {
                 }
                 content={false}
             >
-                <RequestTable />
+                <RequestTable
+                    onReevaluate={handleOpenReevaluateModal}
+                />
                 <CreateCaseModal
                     mode={modalMode}
                     open={openModal}
@@ -89,6 +99,11 @@ const RequestComponentPage = () => {
                 <BiomedicalModal />
                 <ContextualModal />
                 <WhodaForm />
+                <ReevaluateModal
+                    mode={modalReevaluateMode}
+                    open={openReevaluateModal}
+                    setOpenModal={setOpenReevaluateModal}
+                />
             </MainCard>
         </Page>
     )

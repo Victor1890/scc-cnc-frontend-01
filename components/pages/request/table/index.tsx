@@ -5,8 +5,10 @@ import ModalReceptionist from "../modal/receptionist";
 import SelectDocumentForm from "../modal/select-document-form";
 import { useRouter } from 'next/router'
 import { generateUUID } from "@utils/strings/strings.util";
+import { IRequestTableProps } from "./table.interface";
 
-function RequestTable() {
+
+function RequestTable({ onReevaluate }: IRequestTableProps) {
 
     const router = useRouter()
     const [openModal, setOpenModal] = useState(false)
@@ -25,6 +27,7 @@ function RequestTable() {
                 onListForm={() => {
                     setOpenSelectDocumentFormModal(true)
                 }}
+                onReevaluate={onReevaluate}
             >
                 {(columns) => (
                     <Table

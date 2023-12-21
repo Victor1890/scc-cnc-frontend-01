@@ -7,6 +7,7 @@ export interface IRequestTableProps {
     onEdit?: (mode: Exclude<ModalModeType, 'create'>, data: any) => void
     onReport?: (mode: Exclude<ModalModeType, 'create'>, data: any) => void
     onListForm?: (mode: Exclude<ModalModeType, 'create'>, data: any) => void
+    onReevaluate?: (mode: Exclude<ModalModeType, 'create'>, data: any) => void
 }
 
 export interface IColumnRequestTableProps {
@@ -14,4 +15,5 @@ export interface IColumnRequestTableProps {
     onEdit?: (mode: Exclude<ModalModeType, 'create'>, data: any) => void
     onReport?: (mode: Exclude<ModalModeType, 'create'>, data: any) => void
     onListForm?: (mode: Exclude<ModalModeType, 'create'>, data: any) => void
+    onReevaluate?: (mode: Exclude<ModalModeType, 'create'>, data: any) => void
 }
