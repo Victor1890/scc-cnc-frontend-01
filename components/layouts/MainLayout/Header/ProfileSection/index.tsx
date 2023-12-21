@@ -194,7 +194,7 @@ const ProfileSection = () => {
                             <ListItemText
                               primary={
                                 <Typography variant="body2">
-                                  Logout
+                                  Cerrar sesión
                                 </Typography>
                               }
                             />
