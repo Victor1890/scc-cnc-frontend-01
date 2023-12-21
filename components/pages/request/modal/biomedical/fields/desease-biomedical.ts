@@ -32,7 +32,7 @@ export const deseasesBiomedial: FieldConfig<any>[] = [
         ].map((label) => ({ label, value: label }))
     },
     {
-        label: "Origines de condiciones médicas",
+        label: "Orígenes de condiciones médicas",
         name: "origins",
         type: "multi-select",
         responsive: {
