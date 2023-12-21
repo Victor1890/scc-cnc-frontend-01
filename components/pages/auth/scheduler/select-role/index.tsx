@@ -95,8 +95,7 @@ const SelectPatientType = () => {
                                     }}
                                 >
                                     <AccessibleRoundedIcon width={100} height={100} sx={{ fontSize: 100 }} />
-                                    <Typography textAlign={'center'} variant="h2" color={active.isPatient ? '#fff' : "#000"}>Persona</Typography>
-                                    <Typography textAlign={'center'} variant="h2" color={active.isPatient ? '#fff' : "#000"}>con discapacidad</Typography>
+                                    <Typography textAlign={'center'} variant="h2" color={active.isPatient ? '#fff' : "#000"}>Solicitante</Typography>
                                 </Button>
                             </Grid>
                         </Grid>
